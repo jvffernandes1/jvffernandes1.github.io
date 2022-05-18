@@ -113,10 +113,10 @@
 						<input name="end_num" id="end_num" type="text" class="form-control bg-light border-1 small" placeholder="Número do endereço" aria-label="Search" aria-describedby="basic-addon2">
 					</div>
 					<div class="form-group">
-						<input name="cidade" id="cidade" type="text" class="form-control bg-light border-1 small" placeholder="cidade" aria-label="Search" aria-describedby="basic-addon2">
+						<input name="complemento" id="complemento" type="text" class="form-control bg-light border-1 small" placeholder="Complemento" aria-label="Search" aria-describedby="basic-addon2">
 					</div>
 					<div class="form-group">
-						<input name="complemento" id="complemento" type="text" class="form-control bg-light border-1 small" placeholder="Complemento" aria-label="Search" aria-describedby="basic-addon2">
+						<input name="cidade" id="cidade" type="text" class="form-control bg-light border-1 small" placeholder="cidade" aria-label="Search" aria-describedby="basic-addon2">
 					</div>
 					<div class="form-group">
 						<input name="bairro" id="bairro" type="text" class="form-control bg-light border-1 small" aria-label="Search" placeholder="bairro" aria-describedby="basic-addon2">
@@ -132,10 +132,7 @@
 						$.ajax({
 							//O campo URL diz o caminho de onde virá os dados
 							//É importante concatenar o valor digitado no CEP
-							url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
-							headers: {
-									'Content-Type': 'application/x-www-form-urlencoded'
-								}
+							url: 'https://viacep.com.br/ws/'+$(this).val()+'/json',
 							//Aqui você deve preencher o tipo de dados que será lido,
 							//no caso, estamos lendo JSON.
 							dataType: 'json',
@@ -149,7 +146,7 @@
 								$("#logradouro").val(resposta.logradouro);
 								$("#complemento").val(resposta.complemento);
 								$("#bairro").val(resposta.bairro);
-								$("#cidade").val(resposta.cidade);
+								$("#cidade").val(resposta.localidade);
 								$("#uf").val(resposta.uf);
 								//Vamos incluir para que o Número seja focado automaticamente
 								//melhorando a experiência do usuário
