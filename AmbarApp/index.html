@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AmbarApp - Orçamento</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		function mascara_cpf(i){
+   
+		   var v = i.value;
+		   
+		   if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+			  i.value = v.substring(0, v.length-1);
+			  return;
+		   }
+		   
+		   i.setAttribute("maxlength", "14");
+		   if (v.length == 3 || v.length == 7) i.value += ".";
+		   if (v.length == 11) i.value += "-";
+
+		}
+		
+		function mascara_cep(i){
+   
+		   var v = i.value;
+		   
+		   if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+			  i.value = v.substring(0, v.length-1);
+			  return;
+		   }
+		   
+		   i.setAttribute("maxlength", "9");
+		   if (v.length == 5) i.value += "-";
+
+		}
+	</script>
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">AmbarApp</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Criar Orçamento</span></a>
+            </li>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+					Aplicativo Ambar para geração de Orçamentos
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h5 mb-4 text-gray-800">Cadastro do cliente</h1>
+					<div class="form-group">
+						<input name="name" id="name" type="text" class="form-control bg-light border-1 small" placeholder="Nome" aria-label="Search" aria-describedby="basic-addon2">
+					</div>
+					<div class="form-group">
+						<input oninput="mascara_cpf(this)" name="cpf" id="cpf" type="text" class="form-control bg-light border-1 small" placeholder="CPF" aria-label="Search" aria-describedby="basic-addon2">
+					</div>
+					<div class="form-group">
+						<input oninput="mascara_cep(this)" name="cep" id="cep" type="text" class="form-control bg-light border-1 small" placeholder="CEP" aria-label="Search" aria-describedby="basic-addon2">
+					</div>
+					<div class="form-group">
+						<input name="logradouro" id="logradouro" type="text" class="form-control bg-light border-1 small" placeholder="Endereço" aria-label="Search" aria-describedby="basic-addon2">
+					</div>
+					<div class="form-group">
+						<input name="end_num" id="end_num" type="text" class="form-control bg-light border-1 small" placeholder="Número do endereço" aria-label="Search" aria-describedby="basic-addon2">
+					</div>
+					<div class="form-group">
+						<input name="cidade" id="cidade" type="text" class="form-control bg-light border-1 small" placeholder="cidade" aria-label="Search" aria-describedby="basic-addon2">
+					</div>
+					<div class="form-group">
+						<input name="complemento" id="complemento" type="text" class="form-control bg-light border-1 small" placeholder="Complemento" aria-label="Search" aria-describedby="basic-addon2">
+					</div>
+					<div class="form-group">
+						<input name="bairro" id="bairro" type="text" class="form-control bg-light border-1 small" aria-label="Search" placeholder="bairro" aria-describedby="basic-addon2">
+					</div>
+					<div class="form-group">
+						<input name="uf" id="uf" type="text" class="form-control bg-light border-1 small" aria-label="Search" placeholder="UF" aria-describedby="basic-addon2">
+					</div>
+
+                </div>
+				<script type="text/javascript">
+					$("#cep").focusout(function(){
+						//Início do Comando AJAX
+						$.ajax({
+							//O campo URL diz o caminho de onde virá os dados
+							//É importante concatenar o valor digitado no CEP
+							url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+							//Aqui você deve preencher o tipo de dados que será lido,
+							//no caso, estamos lendo JSON.
+							dataType: 'json',
+							//SUCESS é referente a função que será executada caso
+							//ele consiga ler a fonte de dados com sucesso.
+							//O parâmetro dentro da função se refere ao nome da variável
+							//que você vai dar para ler esse objeto.
+							success: function(resposta){
+								//Agora basta definir os valores que você deseja preencher
+								//automaticamente nos campos acima.
+								$("#logradouro").val(resposta.logradouro);
+								$("#complemento").val(resposta.complemento);
+								$("#bairro").val(resposta.bairro);
+								$("#cidade").val(resposta.cidade);
+								$("#uf").val(resposta.uf);
+								//Vamos incluir para que o Número seja focado automaticamente
+								//melhorando a experiência do usuário
+								$("#numero").focus();
+							}
+						});
+					});
+				</script>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; AmbarApp 2022</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>
