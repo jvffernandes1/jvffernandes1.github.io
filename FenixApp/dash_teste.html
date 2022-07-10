@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fênix Racing FSAE - Analysis</title>
+    <link href="/samples/assets/styles.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    </head>
+<body>
+	<script>
+	 // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
+        import { getDatabase, ref, onValue, get } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2XEvG3AEahM5jz4xFmqO9Usrw2wfFNro",
+            authDomain: "fenix-racing-bot.firebaseapp.com",
+            databaseURL: "https://fenix-racing-bot-default-rtdb.firebaseio.com",
+            projectId: "fenix-racing-bot",
+            storageBucket: "fenix-racing-bot.appspot.com",
+            messagingSenderId: "344990826933",
+            appId: "1:344990826933:web:48516885130165330d59fc",
+            measurementId: "G-F194GYR0RF"
+          };
+
+		const db = getDatabase();
+		const starCountRef = ref(db, '/');
+		onValue(starCountRef, (snapshot) => {
+		  const data = snapshot.val();
+		  updateStarCount(postElement, data);
+		});
+		
+		console.log(data);
+	</script>
+
+
+
+
+</body>
+</html>
