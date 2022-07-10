@@ -224,7 +224,7 @@
        var starCountRef = ref(db, 'packages')
 
        onValue(starCountRef, (snapshot) => {
-			susp1 = snapshot.child(snapshot.val()[snapshot.numChildren()]).child('susp1').val();
+			susp1 = snapshot.child(snapshot.val()[0]).child('susp1').val();
           //susp1 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp1').val();
             susp2 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp2').val();
           //susp3 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp3').val();
