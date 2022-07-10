@@ -204,7 +204,7 @@
 			theme: 'dark',
 			x: {
 			  formatter: function (val) {
-				return timestamp
+				return moment(new Date(val)).format("HH:mm:ss")
 			  }
 			}
 		  },
@@ -295,7 +295,10 @@
 		  },
 		  series: [{
 			name: 'battery',
-			data: timestamp
+			data: generateMinuteWiseTimeSeries(new Date("08/03/2022 00:20:00").getTime(), 12, {
+			  min: 11,
+			  max: 14
+			})
 		  }],
 		  title: {
 			text: 'Tensão da Bateria',
