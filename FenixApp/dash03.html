@@ -158,6 +158,9 @@
 					susp2 = snapshot.child(last_key).child('susp2').val();
 					susp3 = snapshot.child(last_key).child('susp3').val();
 					susp4 = snapshot.child(last_key).child('susp4').val();
+					acc_x = snapshot.child(last_key).child('acc_x').val();
+					acc_y = snapshot.child(last_key).child('acc_y').val();
+					acc_z = snapshot.child(last_key).child('acc_z').val();
 					dateObject = new Date((snapshot.child(last_key).child('timestamp').val() * 1000));
 					contador = contador + 1
 					hours = dateObject.getHours();
@@ -778,7 +781,7 @@
 
 
 
-		});
+		}, 100);
 
 	
 	
