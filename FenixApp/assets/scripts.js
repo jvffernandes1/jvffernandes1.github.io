@@ -1,3 +1,82 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
+import { getDatabase, ref, onValue, get } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+	apiKey: "AIzaSyD2XEvG3AEahM5jz4xFmqO9Usrw2wfFNro",
+	authDomain: "fenix-racing-bot.firebaseapp.com",
+	databaseURL: "https://fenix-racing-bot-default-rtdb.firebaseio.com",
+	projectId: "fenix-racing-bot",
+	storageBucket: "fenix-racing-bot.appspot.com",
+	messagingSenderId: "344990826933",
+	appId: "1:344990826933:web:48516885130165330d59fc",
+	measurementId: "G-F194GYR0RF"
+  };
+
+// VARIÁVEIS GLOBAIS -------------------------------------------------------------------------------------------
+        var data_susp1 = [];
+        var data_susp2 = [];
+        var data_susp3 = [];
+        var data_susp4 = [];
+		
+		var vector_keys = [];
+		
+		var last_key;
+
+        var contador = 0;
+		var first_time_here = 0;
+
+        var susp1 = 0;
+        var susp2 = 0;
+        var susp3 = 0;
+        var susp4 = 0;
+        var temp1 = 0;
+        var temp2 = 0;
+        var temp3 = 0;
+        var rpm = 0;
+        var velocidade = 0;
+        var temp_motor = 0;
+        var volante = 0;
+        var acc_x = 0;
+        var acc_y = 0;
+        var acc_z = 0;
+        var timestamp = 0;
+		
+		// Initialize Firebase
+       const app = initializeApp(firebaseConfig);
+       const analytics = getAnalytics(app);
+       // Get a reference to the database service
+       const database = getDatabase(app);
+       const db = getDatabase();
+
+       var starCountRef = ref(db, 'packages')
+
+       onValue(starCountRef, (snapshot) => {
+			if(first_time_here == 0)
+			{
+				contador = Object.keys(snapshot.val()).length;
+				contador = contador - 1;
+				first_time_here = 1;
+			}
+			if(contador < 0)
+			{
+				contador = 0;
+			}
+			
+			vector_keys = Object.keys(snapshot.val());
+			last_key = vector_keys[(vector_keys.length-1)];
+
+            susp1 = snapshot.child(last_key).child('susp1').val();
+			susp2 = snapshot.child(last_key).child('susp2').val();
+			susp3 = snapshot.child(last_key).child('susp3').val();
+			susp4 = snapshot.child(last_key).child('susp4').val();
+			contador = contador + 1
+        });
+
 window.Apex = {
   chart: {
     foreColor: '#fff',
@@ -562,14 +641,14 @@ window.setInterval(function () {
     data: [...chartLine.w.config.series[0].data,
       [
         chartLine.w.globals.maxX + 300000,
-        getRandom()
+        susp1
       ]
     ]
   }, {
     data: [...chartLine.w.config.series[1].data,
       [
         chartLine.w.globals.maxX + 300000,
-        getRandom()				// Aqui!!!!
+        susp2				// Aqui!!!!
       ]
     ]
   }])
