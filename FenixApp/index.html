@@ -226,14 +226,13 @@
        onValue(starCountRef, (snapshot) => {
 			if(first_time_here == 0)
 			{
-				contador = snapshot.val().length;
+				contador = Object.keys(snapshot.val()).length;
 				first_time_here = 1;
 			}
 	   
 			console.log(snapshot.val());
-			console.log(snapshot.val()[0]);
-			console.log(snapshot.val().length);
-			console.log(contador);
+			console.log(Object.keys(snapshot.val()).length);
+
 			//susp1 = snapshot.child(snapshot.val()[0]).child('susp1').val();
             //susp1 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp1').val();
             susp2 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp2').val();
