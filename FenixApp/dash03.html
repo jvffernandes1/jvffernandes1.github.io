@@ -204,7 +204,7 @@
 			theme: 'dark',
 			x: {
 			  formatter: function (val) {
-				return moment(new Date(val)).format("HH:mm:ss")
+				return timestamp
 			  }
 			}
 		  },
@@ -295,10 +295,7 @@
 		  },
 		  series: [{
 			name: 'battery',
-			data: generateMinuteWiseTimeSeries(new Date("08/03/2022 00:20:00").getTime(), 12, {
-			  min: 11,
-			  max: 14
-			})
+			data: timestamp
 		  }],
 		  title: {
 			text: 'Tensão da Bateria',
@@ -732,14 +729,14 @@
 		  chartLine.updateSeries([{
 			data: [...chartLine.w.config.series[0].data,
 			  [
-				timestamp,
+				chartLine.w.globals.maxX + 300000,
 				susp1
 			  ]
 			]
 		  }, {
 			data: [...chartLine.w.config.series[1].data,
 			  [
-				timestamp,
+				chartLine.w.globals.maxX + 300000,
 				susp2				// Aqui!!!!
 			  ]
 			]
