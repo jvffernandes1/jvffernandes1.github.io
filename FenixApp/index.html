@@ -227,15 +227,16 @@
 			if(first_time_here == 0)
 			{
 				contador = Object.keys(snapshot.val()).length;
+				contador = contador - 1;
 				first_time_here = 1;
 			}
-			if(contador == 0)
+			if(contador < 0)
 			{
-				contador = 1;
+				contador = 0;
 			}
 			console.log(snapshot.val());
 			console.log(Object.keys(snapshot.val()).length);
-			console.log(snapshot.val()[(contador-1)]);
+			console.log(snapshot.val()[contador]);
 
 			//susp1 = snapshot.val()[(contador-1)].child('susp1').val();
 			//tstamp = snapshot.child(snapshot.val()[(contador-1)]).child('timestamp').val();
