@@ -56,7 +56,7 @@
 		var last_key;
 
         var contador = 0;
-		
+		var first_time_here = 0;
 
 		//Suspensão
         var susp1 = 0;
@@ -99,19 +99,19 @@
             // É aqui que a mágica acontece, o contador e o dado da suspensão vão para o vetor que mostrará as coisas!
 
             data_susp1.push({
-              x: new Date(timestamp),
+              x: contador,
               y: susp1
             })
             data_susp2.push({
-              x: new Date(timestamp),
+              x: contador,
               y: susp2
             })
             data_susp3.push({
-              x: new Date(timestamp),
+              x: contador,
               y: susp3
             })
             data_susp4.push({
-              x: new Date(timestamp),
+              x: contador,
               y: susp4
             })
         }
@@ -127,7 +127,7 @@
               zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
               },
             dataLabels: { enabled: false },
-            xaxis: { type: 'datetime', range: 100, labels: { format: 'HH:mm:ss'}},
+            xaxis: { type: 'numeric', range: 100 },
             yaxis: { max: 1024 },
             legend: { show: false },
             stroke: { curve: 'straight', width: 1},
@@ -181,7 +181,7 @@
               zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
               },
             dataLabels: { enabled: false },
-            xaxis: { type: 'datetime', range: 100 },
+            xaxis: { type: 'numeric', range: 100 },
             yaxis: { max: 1024 },
             legend: { show: false },
             stroke: { curve: 'straight', width: 1},
@@ -239,16 +239,16 @@
        var starCountRef = ref(db, 'packages')
 
        onValue(starCountRef, (snapshot) => {
-			// if(first_time_here == 0)
-			//{
-			//	contador = Object.keys(snapshot.val()).length;
-			//	contador = contador - 1;
-			//	first_time_here = 1;
-			//}
-			//if(contador < 0)
-			//{
-			//	contador = 0;
-			//}
+			 if(first_time_here == 0)
+			{
+				contador = Object.keys(snapshot.val()).length;
+				contador = contador - 1;
+				first_time_here = 1;
+			}
+			if(contador < 0)
+			{
+				contador = 0;
+			}
 			
 			vector_keys = Object.keys(snapshot.val());
 			last_key = vector_keys[(vector_keys.length-1)];
@@ -265,15 +265,15 @@
 			acc_z = snapshot.child(last_key).child('acc_z').val();
 			
 			// Timestamp
-			dateObject = new Date((snapshot.child(last_key).child('timestamp').val() * 1000));
-			hours = dateObject.getHours();
-			minutes = "0" + dateObject.getMinutes();
-			seconds = "0" + dateObject.getSeconds();
+			//dateObject = new Date((snapshot.child(last_key).child('timestamp').val() * 1000));
+			//hours = dateObject.getHours();
+			//minutes = "0" + dateObject.getMinutes();
+			//seconds = "0" + dateObject.getSeconds();
 			//imestamp = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-			timestamp = dateObject;
+			//timestamp = dateObject;
 			
 			
-			//contador = contador + 1
+			contador = contador + 1
         });
 
     </script>
