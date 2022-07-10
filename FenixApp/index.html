@@ -88,19 +88,19 @@
             // É aqui que a mágica acontece, o contador e o dado da suspensão vão para o vetor que mostrará as coisas!
 
             data_susp1.push({
-              x: contador,
+              x: timestamp,
               y: susp1
             })
             data_susp2.push({
-              x: contador,
+              x: timestamp,
               y: susp2
             })
             data_susp3.push({
-              x: contador,
+              x: timestamp,
               y: susp3
             })
             data_susp4.push({
-              x: contador,
+              x: timestamp,
               y: susp4
             })
         }
@@ -242,10 +242,25 @@
 			vector_keys = Object.keys(snapshot.val());
 			last_key = vector_keys[(vector_keys.length-1)];
 
+			// Suspensão
             susp1 = snapshot.child(last_key).child('susp1').val();
 			susp2 = snapshot.child(last_key).child('susp2').val();
 			susp3 = snapshot.child(last_key).child('susp3').val();
 			susp4 = snapshot.child(last_key).child('susp4').val();
+			
+			// Acelerômetro
+			acc_x = snapshot.child(last_key).child('acc_x').val();
+			acc_y = snapshot.child(last_key).child('acc_y').val();
+			acc_z = snapshot.child(last_key).child('acc_z').val();
+			
+			// Timestamp
+			dateObject = new Date((snapshot.child(last_key).child('timestamp').val() * 1000));
+			hours = dateObject.getHours();
+			minutes = "0" + dateObject.getMinutes();
+			seconds = "0" + dateObject.getSeconds();
+			timestamp = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+			
+			
 			contador = contador + 1
         });
 
