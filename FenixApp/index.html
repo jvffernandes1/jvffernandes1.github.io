@@ -241,22 +241,12 @@
 			
 			vector_keys = Object.keys(snapshot.val());
 			last_key = vector_keys[(vector_keys.length-1)];
-			
-			console.log(snapshot.val());
-			console.log(Object.keys(snapshot.val()).length);
-			
-			//susp1 = snapshot.child().child('susp1').val();
-			//susp1 = snapshot.val()[contador].susp1;
-			//console.log(susp1);
-			//tstamp = snapshot.child(snapshot.val()[(contador-1)]).child('timestamp').val();
+
             susp1 = snapshot.child(last_key).child('susp1').val();
-            //susp2 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp2').val();
-          //susp3 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp3').val();
-          //susp4 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp4').val();
-		  //ese = snapshot.val();
-          contador = contador + 1
-		  
-		  //console.log(ese);
+			susp2 = snapshot.child(last_key).child('susp2').val();
+			susp3 = snapshot.child(last_key).child('susp3').val();
+			susp4 = snapshot.child(last_key).child('susp4').val();
+			contador = contador + 1
         });
 
     </script>

@@ -569,7 +569,7 @@ window.setInterval(function () {
     data: [...chartLine.w.config.series[1].data,
       [
         chartLine.w.globals.maxX + 300000,
-        getRandom()
+        getRandom()				// Aqui!!!!
       ]
     ]
   }])
@@ -608,4 +608,4 @@ window.setInterval(function () {
 
 
 
-}, 3000);
+}, 100);
