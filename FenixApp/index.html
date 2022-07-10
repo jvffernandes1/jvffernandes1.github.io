@@ -229,20 +229,23 @@
 				contador = Object.keys(snapshot.val()).length;
 				first_time_here = 1;
 			}
-	   
+			if(contador == 0)
+			{
+				contador = 1;
+			}
 			console.log(snapshot.val());
 			console.log(Object.keys(snapshot.val()).length);
 
 			susp1 = snapshot.child(snapshot.val()[(contador-1)]).child('susp1').val();
 			//tstamp = snapshot.child(snapshot.val()[(contador-1)]).child('timestamp').val();
             //susp1 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp1').val();
-            susp2 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp2').val();
+            //susp2 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp2').val();
           //susp3 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp3').val();
           //susp4 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp4').val();
 		  //ese = snapshot.val();
           contador = contador + 1
 		  
-		  console.log(ese);
+		  //console.log(ese);
         });
 
     </script>
