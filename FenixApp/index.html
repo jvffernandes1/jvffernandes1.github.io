@@ -235,16 +235,16 @@
        var starCountRef = ref(db, 'packages')
 
        onValue(starCountRef, (snapshot) => {
-			if(first_time_here == 0)
-			{
-				contador = Object.keys(snapshot.val()).length;
-				contador = contador - 1;
-				first_time_here = 1;
-			}
-			if(contador < 0)
-			{
-				contador = 0;
-			}
+			 <!-- if(first_time_here == 0) -->
+			<!-- { -->
+				<!-- contador = Object.keys(snapshot.val()).length; -->
+				<!-- contador = contador - 1; -->
+				<!-- first_time_here = 1; -->
+			<!-- } -->
+			<!-- if(contador < 0) -->
+			<!-- { -->
+				<!-- contador = 0; -->
+			<!-- } -->
 			
 			vector_keys = Object.keys(snapshot.val());
 			last_key = vector_keys[(vector_keys.length-1)];
@@ -268,7 +268,7 @@
 			timestamp = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 			
 			
-			contador = contador + 1
+			//contador = contador + 1
         });
 
     </script>
