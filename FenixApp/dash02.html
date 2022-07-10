@@ -14,13 +14,10 @@
 
     <style>
         #chart_susp1, #chart_susp2, #chart_susp3, #chart_susp4 {
-            max-width: 50%;
-            width: 49%;
-            margin: 35px auto;
-            border: 2px solid black;
-            display: inline-block;
-            vertical-align: middle;
-        }
+      max-width: 98%;
+      margin: 35px auto;
+      border: 2px solid black;
+    }
 
         .navbar {
             -webkit-border-radius: 0;
@@ -50,12 +47,16 @@
     <script type="module">
 
         // VARIÁVEIS GLOBAIS -------------------------------------------------------------------------------------------
-        var data_susp1 = []
-        var data_susp2 = []
-        var data_susp3 = []
-        var data_susp4 = []
+        var data_susp1 = [];
+        var data_susp2 = [];
+        var data_susp3 = [];
+        var data_susp4 = [];
+		
+		var vector_keys = [];
+		var last_key;
 
         var contador = 0;
+		var first_time_here = 0;
 
 		//Suspensão
         var susp1 = 0;
@@ -80,7 +81,7 @@
         var acc_z = 0;
 		
 		// Timestamp
-        var timestamp = 0;
+        var timestamp = 1327359600000;
 		var dateObject = 0;
 		var hours = 0;
 		var minutes = 0;
@@ -118,8 +119,8 @@
         var options_susp1 = {
               series: [{data: data_susp1.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
               chart: { id: 'realtime', height: 300, type: 'line', animations: {
-                enabled: true, easing: 'linear', dynamicAnimation: {
-                  speed: 10000
+                enabled: false, easing: 'linear', dynamicAnimation: {
+                  speed: 0
                     }
                 },
               toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
@@ -235,14 +236,44 @@
        const database = getDatabase(app);
        const db = getDatabase();
 
-       var starCountRef = ref(db, 'packages');
+       var starCountRef = ref(db, 'packages')
 
        onValue(starCountRef, (snapshot) => {
-          susp1 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp1').val();
-          susp2 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp2').val();
-          susp3 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp3').val();
-          susp4 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp4').val();
-          contador = contador + 1
+			 if(first_time_here == 0)
+			{
+				contador = Object.keys(snapshot.val()).length;
+				contador = contador - 1;
+				first_time_here = 1;
+			}
+			if(contador < 0)
+			{
+				contador = 0;
+			}
+			
+			vector_keys = Object.keys(snapshot.val());
+			last_key = vector_keys[(vector_keys.length-1)];
+
+			// Suspensão
+            susp1 = snapshot.child(last_key).child('susp1').val();
+			susp2 = snapshot.child(last_key).child('susp2').val();
+			susp3 = snapshot.child(last_key).child('susp3').val();
+			susp4 = snapshot.child(last_key).child('susp4').val();
+			
+			// Acelerômetro
+			acc_x = snapshot.child(last_key).child('acc_x').val();
+			acc_y = snapshot.child(last_key).child('acc_y').val();
+			acc_z = snapshot.child(last_key).child('acc_z').val();
+			
+			// Timestamp
+			//dateObject = new Date((snapshot.child(last_key).child('timestamp').val() * 1000));
+			//hours = dateObject.getHours();
+			//minutes = "0" + dateObject.getMinutes();
+			//seconds = "0" + dateObject.getSeconds();
+			//imestamp = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+			//timestamp = dateObject;
+			
+			
+			contador = contador + 1
         });
 
     </script>
@@ -259,7 +290,7 @@
                 <ul class="dropdown-menu">
                   <li><a href="index.html">Dashboard 01</a></li>
                   <li><a href="dash02.html">Dashboard 02</a></li>
-                  <li><a href="#">Dashboard 03</a></li>
+                  <li><a href="dash03.html">Dashboard 03</a></li>
                 </ul>
               </li>
               <li><a href="#">Data Analysis</a></li>

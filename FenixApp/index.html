@@ -51,6 +51,7 @@
         var data_susp2 = [];
         var data_susp3 = [];
         var data_susp4 = [];
+		var data_acc = [];
 		
 		var vector_keys = [];
 		var last_key;
@@ -113,6 +114,12 @@
             data_susp4.push({
               x: contador,
               y: susp4
+            })
+			data_acc.push({
+              x: contador,
+              y1: acc_x,
+			  y2: acc_y,
+			  y3: acc_z
             })
         }
 
@@ -187,6 +194,24 @@
             stroke: { curve: 'straight', width: 1},
             title: { text: 'Back-left suspension', align: 'left' }
         };
+		
+		var acc = {
+              series: [{data: data_susp4.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 300, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 1024 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'Back-left suspension', align: 'left' }
+        };
 
         var chart_susp1 = new ApexCharts(document.querySelector("#chart_susp1"), options_susp1);
         chart_susp1.render();
@@ -199,6 +224,9 @@
 
         var chart_susp4 = new ApexCharts(document.querySelector("#chart_susp4"), options_susp4);
         chart_susp4.render();
+		
+		var chart_acc = new ApexCharts(document.querySelector("#chart_acc"), options_acc);
+        chart_acc.render();
 
         window.setInterval(function () {
             getNewSeries()
@@ -206,6 +234,7 @@
             chart_susp2.updateSeries([{ data: data_susp2 }])
             chart_susp3.updateSeries([{ data: data_susp3 }])
             chart_susp4.updateSeries([{ data: data_susp4 }])
+			chart_acc.updateSeries([{ data: data_acc }])
         })
 
 
@@ -304,6 +333,7 @@
         <div id="chart_susp2"></div>
         <div id="chart_susp3"></div>
         <div id="chart_susp4"></div>
+		<div id="chart_acc"></div>
 
 
 </body>
