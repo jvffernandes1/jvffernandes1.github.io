@@ -232,7 +232,8 @@
 	   
 			console.log(snapshot.val());
 			console.log(snapshot.val()[0]);
-			console.log(snapshot.length);
+			console.log(snapshot.val().length);
+			console.log(contador);
 			//susp1 = snapshot.child(snapshot.val()[0]).child('susp1').val();
             //susp1 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp1').val();
             susp2 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp2').val();
