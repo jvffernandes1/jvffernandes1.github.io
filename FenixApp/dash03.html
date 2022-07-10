@@ -126,6 +126,10 @@
 				var acc_y = 0;
 				var acc_z = 0;
 				var timestamp = 0;
+				var dateObject = 0;
+				var hours = 0;
+				var minutes = 0;
+				var seconds = 0;
 				
 				// Initialize Firebase
 			   const app = initializeApp(firebaseConfig);
@@ -155,8 +159,15 @@
 					susp2 = snapshot.child(last_key).child('susp2').val();
 					susp3 = snapshot.child(last_key).child('susp3').val();
 					susp4 = snapshot.child(last_key).child('susp4').val();
+					dateObject = new Date((snapshot.child(last_key).child('timestamp').val() * 1000));
 					contador = contador + 1
+					hours = dateObject.getHours();
+					minutes = "0" + dateObject.getMinutes();
+					seconds = "0" + dateObject.getSeconds();
+					timestamp = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 				});
+
+		
 
 		window.Apex = {
 		  chart: {
@@ -721,14 +732,14 @@
 		  chartLine.updateSeries([{
 			data: [...chartLine.w.config.series[0].data,
 			  [
-				chartLine.w.globals.maxX + 300000,
+				timestamp,
 				susp1
 			  ]
 			]
 		  }, {
 			data: [...chartLine.w.config.series[1].data,
 			  [
-				chartLine.w.globals.maxX + 300000,
+				timestamp,
 				susp2				// Aqui!!!!
 			  ]
 			]
