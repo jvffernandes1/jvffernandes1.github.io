@@ -51,6 +51,7 @@
         var data_susp2 = []
         var data_susp3 = []
         var data_susp4 = []
+		
 
         var contador = 0;
 		var first_time_here = 0;
@@ -236,9 +237,9 @@
 			}
 			console.log(snapshot.val());
 			console.log(Object.keys(snapshot.val()).length);
-			console.log(snapshot.val()[contador]['susp1']);
+			console.log(snapshot.val()[contador].susp1);
 
-			susp1 = snapshot.val()[contador]['susp1'];
+			susp1 = snapshot.val()[contador].susp1;
 			console.log(susp1);
 			//tstamp = snapshot.child(snapshot.val()[(contador-1)]).child('timestamp').val();
             //susp1 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp1').val();
