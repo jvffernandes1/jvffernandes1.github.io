@@ -195,8 +195,8 @@
             title: { text: 'Back-left suspension', align: 'left' }
         };
 		
-		var acc = {
-              series: [{data: data_susp4.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+		var options_acc = {
+              series: [{data: data_acc.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
               chart: { id: 'realtime', height: 300, type: 'line', animations: {
                 enabled: true, easing: 'linear', dynamicAnimation: {
                   speed: 10000
