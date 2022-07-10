@@ -33,11 +33,22 @@
 		  updateStarCount(postElement, data);
 		});
 		
+		const element = document.getElementById("demo");
+		setInterval(function() {
+		onValue(starCountRef, (snapshot) => {
+		  data = snapshot.val();
+		  updateStarCount(postElement, data);
+		});
+		
+		
+		element.innerHTML = data
+		}, 1000);
+		
 		console.log(data);
 	</script>
 
 
-
+	<p id="demo"></p>
 
 </body>
 </html>
