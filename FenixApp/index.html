@@ -54,6 +54,8 @@
 
         var contador = 0;
 
+
+		var ese;
         var susp1 = 0;
         var susp2 = 0;
         var susp3 = 0;
@@ -226,7 +228,10 @@
           susp2 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp2').val();
           susp3 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp3').val();
           susp4 = snapshot.child('package'+(999999+snapshot.size).toString()).child('susp4').val();
+		  ese = snapshot.val();
           contador = contador + 1
+		  
+		  console.log(ese);
         });
 
     </script>
