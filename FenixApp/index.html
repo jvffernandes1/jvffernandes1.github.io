@@ -160,7 +160,7 @@
         };
 
         var options_susp3 = {
-              series: [{data: data_susp3.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              series: [{data: data_susp3.slice(0,1)},{data: data_susp3.slice(0,2)},{data: data_susp3.slice(0,3)}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
               chart: { id: 'realtime', height: 300, type: 'line', animations: {
                 enabled: true, easing: 'linear', dynamicAnimation: {
                   speed: 10000
