@@ -99,19 +99,19 @@
             // É aqui que a mágica acontece, o contador e o dado da suspensão vão para o vetor que mostrará as coisas!
 
             data_susp1.push({
-              x: new Date(timestamp).getTime(),
+              x: new Date(timestamp),
               y: susp1
             })
             data_susp2.push({
-              x: new Date(timestamp).getTime(),
+              x: new Date(timestamp),
               y: susp2
             })
             data_susp3.push({
-              x: new Date(timestamp).getTime(),
+              x: new Date(timestamp),
               y: susp3
             })
             data_susp4.push({
-              x: new Date(timestamp).getTime(),
+              x: new Date(timestamp),
               y: susp4
             })
         }
@@ -127,7 +127,10 @@
               zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
               },
             dataLabels: { enabled: false },
-            xaxis: { type: 'datetime', range: 100 },
+            xaxis: { type: 'datetime', range: 100, labels: {
+					  labels: {
+						format: 'HH:mm:ss',
+					  } },
             yaxis: { max: 1024 },
             legend: { show: false },
             stroke: { curve: 'straight', width: 1},
@@ -269,7 +272,7 @@
 			hours = dateObject.getHours();
 			minutes = "0" + dateObject.getMinutes();
 			seconds = "0" + dateObject.getSeconds();
-			//timestamp = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+			//imestamp = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 			timestamp = dateObject;
 			
 			
