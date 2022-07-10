@@ -27,10 +27,10 @@
 
 		const db = getDatabase();
 		const starCountRef = ref(db, '/');
-		const data;
+		var data;
 		onValue(starCountRef, (snapshot) => {
-			data = snapshot.val();
-			updateStarCount(postElement, data);
+		  data = snapshot.val();
+		  updateStarCount(postElement, data);
 		});
 		
 		console.log(data);
