@@ -431,7 +431,7 @@
         chart_susp4.render();
 		
 		var chart_temp1 = new ApexCharts(document.querySelector("#chart_temp1"), options_temp1);
-        chart_acc_temp1.render();
+        chart_temp1.render();
 		
 		var chart_temp2 = new ApexCharts(document.querySelector("#chart_temp2"), options_temp2);
         chart_temp2.render();
@@ -440,7 +440,7 @@
         chart_temp3.render();
 		
 		var chart_temp_motor = new ApexCharts(document.querySelector("#chart_temp_motor"), options_temp_motor);
-        chart_acc_temp_motor.render();
+        chart_temp_motor.render();
 		
 		var chart_rpm = new ApexCharts(document.querySelector("#chart_rpm"), options_rpm);
         chart_rpm.render();
@@ -455,10 +455,10 @@
         chart_acc_x.render();
 		
 		var chart_acc_y = new ApexCharts(document.querySelector("#chart_acc_y"), options_acc_y);
-        chart_acc_x.render();
+        chart_acc_y.render();
 		
 		var chart_acc_z = new ApexCharts(document.querySelector("#chart_acc_z"), options_acc_z);
-        chart_acc_x.render();
+        chart_acc_z.render();
 
         window.setInterval(function () {
             getNewSeries()
