@@ -55,7 +55,7 @@
 		  $("button").click(function(){
 			$.getJSON("https://fenix-racing-bot-default-rtdb.firebaseio.com/packages.json", function(results){
 			  $.each(results, function(index){
-				$("#text").append(results[index] + " ");
+				$("#text").append(JSON.stringify(results) + " ");
 			  });
 			});
 		  });
