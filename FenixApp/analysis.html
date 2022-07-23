@@ -53,9 +53,9 @@
 	
 		$(document).ready(function(){
 		  $("button").click(function(){
-			$.getJSON("https://fenix-racing-bot-default-rtdb.firebaseio.com/packages.json", function(result){
-			  $.each(result, function(i, field){
-				$("div").append(field + " ");
+			$.getJSON("https://fenix-racing-bot-default-rtdb.firebaseio.com/packages.json", function(results){
+			  $.each(results, function(index){
+				$("#text").append(results[index] + " ");
 			  });
 			});
 		  });
@@ -89,7 +89,7 @@
 	
 	<button>Get JSON data</button>
 
-	<div></div>
+	<div id="text"></div>
 
 
 </body>
