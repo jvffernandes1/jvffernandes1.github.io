@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Fênix Racing FSAE - Analysis</title>
-    <!--<link href="/samples/assets/styles.css" rel="stylesheet" />-->
+    <link href="/samples/assets/styles.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,12 +14,15 @@
 
     <style>
         #chart_susp1, #chart_susp2, #chart_susp3, #chart_susp4, #chart_acc_x, #chart_acc_y, #chart_acc_z, #chart_rpm, #chart_temp1, #chart_temp2, #chart_temp3, #chart_temp_motor, #chart_velocidade, #chart_volante {
-      max-width: 32%;
-      margin: 10px auto;
-      border: 1px solid black;
-	  display: inline;
-    }
+			margin: 10px auto;
+		}
 
+		#graph_columns
+		{
+			max-width: 32%;
+			border: 1px solid black;
+		}
+		
         .navbar {
             -webkit-border-radius: 0;
             -moz-border-radius: 0;
@@ -581,21 +584,26 @@
             </ul>
           </div>
         </nav>
-
-        <div id="chart_susp1"></div>
-        <div id="chart_susp2"></div>
-        <div id="chart_susp3"></div>
-        <div id="chart_susp4"></div>
-		<div id="chart_temp1"></div>
-		<div id="chart_temp2"></div>
-		<div id="chart_temp3"></div>
-		<div id="chart_acc_x"></div>
-		<div id="chart_acc_y"></div>
-		<div id="chart_acc_z"></div>
-		<div id="chart_temp_motor"></div>
-		<div id="chart_velocidade"></div>
-		<div id="chart_rpm"></div>
-		<div id="chart_volante"></div>
+		<div id="graph_columns">
+			<div id="chart_susp1"></div>
+			<div id="chart_susp2"></div>
+			<div id="chart_susp3"></div>
+			<div id="chart_susp4"></div>
+		</div>
+		<div id="graph_columns">
+			<div id="chart_temp1"></div>
+			<div id="chart_temp2"></div>
+			<div id="chart_temp3"></div>
+			<div id="chart_acc_x"></div>
+			<div id="chart_acc_y"></div>
+			<div id="chart_acc_z"></div>
+		</div>
+		<div id="graph_columns">
+			<div id="chart_temp_motor"></div>
+			<div id="chart_velocidade"></div>
+			<div id="chart_rpm"></div>
+			<div id="chart_volante"></div>
+		</div>
 
 
 </body>
