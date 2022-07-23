@@ -13,10 +13,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
-        #chart_susp1, #chart_susp2, #chart_susp3, #chart_susp4 {
+        #chart_susp1, #chart_susp2, #chart_susp3, #chart_susp4, #chart_acc_x, #chart_acc_y, #chart_acc_z, #chart_rpm, #chart_temp1, #chart_temp2, #chart_temp3, #chart_temp_motor, #chart_velocidade, #chart_volante {
       max-width: 98%;
       margin: 35px auto;
-      border: 2px solid black;
+      border: 0px solid black;
     }
 
         .navbar {
@@ -304,7 +304,7 @@
               },
             dataLabels: { enabled: false },
             xaxis: { type: 'numeric', range: 100 },
-            yaxis: { max: 1024 },
+            yaxis: { max: 12000 },
             legend: { show: false },
             stroke: { curve: 'straight', width: 1},
             title: { text: 'Motor RPM', align: 'left' }
@@ -322,7 +322,7 @@
               },
             dataLabels: { enabled: false },
             xaxis: { type: 'numeric', range: 100 },
-            yaxis: { max: 1024 },
+            yaxis: { max: 250 },
             legend: { show: false },
             stroke: { curve: 'straight', width: 1},
             title: { text: 'Vehicle Speed', align: 'left' }

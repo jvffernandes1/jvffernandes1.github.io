@@ -13,10 +13,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
-        #chart_susp1, #chart_susp2, #chart_susp3, #chart_susp4 {
-      max-width: 98%;
-      margin: 35px auto;
-      border: 2px solid black;
+        #chart_susp1, #chart_susp2, #chart_susp3, #chart_susp4, #chart_acc_x, #chart_acc_y, #chart_acc_z, #chart_rpm, #chart_temp1, #chart_temp2, #chart_temp3, #chart_temp_motor, #chart_velocidade, #chart_volante {
+      max-width: 32%;
+      margin: 10px auto;
+      border: 1px solid black;
     }
 
         .navbar {
@@ -51,6 +51,16 @@
         var data_susp2 = [];
         var data_susp3 = [];
         var data_susp4 = [];
+		var data_temp1 = [];
+		var data_temp2 = [];
+		var data_temp3 = [];
+		var data_rpm = [];
+		var data_velocidade = [];
+		var data_temp_motor = [];
+		var data_volante = [];
+		var data_acc_x = [];
+		var data_acc_y = [];
+		var data_acc_z = [];
 		
 		var vector_keys = [];
 		var last_key;
@@ -114,11 +124,51 @@
               x: contador,
               y: susp4
             })
+			data_temp1.push({
+              x: contador,
+              y: temp1
+            })
+			data_temp2.push({
+              x: contador,
+              y: temp2
+            })
+			data_temp3.push({
+              x: contador,
+              y: temp3
+            })
+			data_rpm.push({
+              x: contador,
+              y: rpm
+            })
+			data_velocidade.push({
+              x: contador,
+              y: velocidade
+            })
+			data_temp_motor.push({
+              x: contador,
+              y: temp_motor
+            })
+			data_volante.push({
+              x: contador,
+              y: volante
+            })
+			data_acc_x.push({
+              x: contador,
+              y: acc_x
+            })
+			data_acc_y.push({
+              x: contador,
+              y: acc_y
+            })
+			data_acc_z.push({
+              x: contador,
+              y: acc_z
+            })
         }
 
         var options_susp1 = {
               series: [{data: data_susp1.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
-              chart: { id: 'realtime', height: 300, type: 'line', animations: {
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
                 enabled: false, easing: 'linear', dynamicAnimation: {
                   speed: 0
                     }
@@ -136,7 +186,7 @@
 
         var options_susp2 = {
               series: [{data: data_susp2.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
-              chart: { id: 'realtime', height: 300, type: 'line', animations: {
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
                 enabled: true, easing: 'linear', dynamicAnimation: {
                   speed: 10000
                     }
@@ -153,8 +203,8 @@
         };
 
         var options_susp3 = {
-              series: [{data: data_susp3.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
-              chart: { id: 'realtime', height: 300, type: 'line', animations: {
+              series: [{data: data_susp3.slice(0,1)},{data: data_susp3.slice(0,2)},{data: data_susp3.slice(0,3)}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
                 enabled: true, easing: 'linear', dynamicAnimation: {
                   speed: 10000
                     }
@@ -172,7 +222,7 @@
 
         var options_susp4 = {
               series: [{data: data_susp4.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
-              chart: { id: 'realtime', height: 300, type: 'line', animations: {
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
                 enabled: true, easing: 'linear', dynamicAnimation: {
                   speed: 10000
                     }
@@ -187,6 +237,186 @@
             stroke: { curve: 'straight', width: 1},
             title: { text: 'Back-left suspension', align: 'left' }
         };
+		
+		var options_temp1 = {
+              series: [{data: data_temp1.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 1024 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'Internal Tyre Temperature', align: 'left' }
+        };
+		
+		var options_temp2 = {
+              series: [{data: data_temp2.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 1024 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'Medium Tyre Temperature', align: 'left' }
+        };
+		
+		var options_temp3 = {
+              series: [{data: data_temp3.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 1024 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'External Tyre Temperature', align: 'left' }
+        };
+		
+		var options_rpm = {
+              series: [{data: data_rpm.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 12000 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'Motor RPM', align: 'left' }
+        };
+		
+		var options_velocidade = {
+              series: [{data: data_velocidade.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 250 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'Vehicle Speed', align: 'left' }
+        };
+		
+		var options_temp_motor = {
+              series: [{data: data_temp_motor.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 1024 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'Motor Temperature', align: 'left' }
+        };
+		
+		var options_volante = {
+              series: [{data: data_volante.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 1024 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'Steering Wheel', align: 'left' }
+        };
+		
+		var options_acc_x = {
+              series: [{data: data_acc_x.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 1024 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'Acceleration X-Axis', align: 'left' }
+        };
+		
+		var options_acc_y = {
+              series: [{data: data_acc_y.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 1024 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'Acceleration Y-Axis', align: 'left' }
+        };
+		
+		var options_acc_z = {
+              series: [{data: data_acc_z.slice()}],  // Pega os dados "cadastrados" com a função anterior e joga no gráfico.
+              chart: { id: 'realtime', height: 250, type: 'line', animations: {
+                enabled: true, easing: 'linear', dynamicAnimation: {
+                  speed: 10000
+                    }
+                },
+              toolbar: { show: false }, // Gráficos ao vivo não consegue suportar o toolbar
+              zoom: { enabled: false }  // Gráficos ao vivo não consegue suportar o zoom
+              },
+            dataLabels: { enabled: false },
+            xaxis: { type: 'numeric', range: 100 },
+            yaxis: { max: 1024 },
+            legend: { show: false },
+            stroke: { curve: 'straight', width: 1},
+            title: { text: 'Acceleration Z-Axis', align: 'left' }
+        };
 
         var chart_susp1 = new ApexCharts(document.querySelector("#chart_susp1"), options_susp1);
         chart_susp1.render();
@@ -199,6 +429,36 @@
 
         var chart_susp4 = new ApexCharts(document.querySelector("#chart_susp4"), options_susp4);
         chart_susp4.render();
+		
+		var chart_temp1 = new ApexCharts(document.querySelector("#chart_temp1"), options_temp1);
+        chart_temp1.render();
+		
+		var chart_temp2 = new ApexCharts(document.querySelector("#chart_temp2"), options_temp2);
+        chart_temp2.render();
+		
+		var chart_temp3 = new ApexCharts(document.querySelector("#chart_temp3"), options_temp3);
+        chart_temp3.render();
+		
+		var chart_temp_motor = new ApexCharts(document.querySelector("#chart_temp_motor"), options_temp_motor);
+        chart_temp_motor.render();
+		
+		var chart_rpm = new ApexCharts(document.querySelector("#chart_rpm"), options_rpm);
+        chart_rpm.render();
+		
+		var chart_velocidade = new ApexCharts(document.querySelector("#chart_velocidade"), options_velocidade);
+        chart_velocidade.render();
+		
+		var chart_volante = new ApexCharts(document.querySelector("#chart_volante"), options_volante);
+        chart_volante.render();
+		
+		var chart_acc_x = new ApexCharts(document.querySelector("#chart_acc_x"), options_acc_x);
+        chart_acc_x.render();
+		
+		var chart_acc_y = new ApexCharts(document.querySelector("#chart_acc_y"), options_acc_y);
+        chart_acc_y.render();
+		
+		var chart_acc_z = new ApexCharts(document.querySelector("#chart_acc_z"), options_acc_z);
+        chart_acc_z.render();
 
         window.setInterval(function () {
             getNewSeries()
@@ -206,6 +466,16 @@
             chart_susp2.updateSeries([{ data: data_susp2 }])
             chart_susp3.updateSeries([{ data: data_susp3 }])
             chart_susp4.updateSeries([{ data: data_susp4 }])
+			chart_temp1.updateSeries([{ data: data_temp1 }])
+			chart_temp2.updateSeries([{ data: data_temp2 }])
+			chart_temp3.updateSeries([{ data: data_temp3 }])
+			chart_rpm.updateSeries([{ data: data_rpm }])
+			chart_velocidade.updateSeries([{ data: data_velocidade }])
+			chart_temp_motor.updateSeries([{ data: data_temp_motor }])
+			chart_volante.updateSeries([{ data: data_volante }])
+			chart_acc_x.updateSeries([{ data: data_acc_x }])
+			chart_acc_y.updateSeries([{ data: data_acc_y }])
+			chart_acc_z.updateSeries([{ data: data_acc_z }])
         })
 
 
@@ -264,6 +534,17 @@
 			acc_y = snapshot.child(last_key).child('acc_y').val();
 			acc_z = snapshot.child(last_key).child('acc_z').val();
 			
+			// Temeperatura do pneu
+			temp1 = snapshot.child(last_key).child('temp1').val();
+			temp2 = snapshot.child(last_key).child('temp2').val();
+			temp3 = snapshot.child(last_key).child('temp3').val();
+			
+			// Extras
+			temp_motor = snapshot.child(last_key).child('temp_motor').val();
+			velocidade = snapshot.child(last_key).child('velocidade').val();
+			rpm = snapshot.child(last_key).child('rpm').val();
+			volante = snapshot.child(last_key).child('volante').val();
+			
 			// Timestamp
 			//dateObject = new Date((snapshot.child(last_key).child('timestamp').val() * 1000));
 			//hours = dateObject.getHours();
@@ -304,6 +585,16 @@
         <div id="chart_susp2"></div>
         <div id="chart_susp3"></div>
         <div id="chart_susp4"></div>
+		<div id="chart_temp1"></div>
+		<div id="chart_temp2"></div>
+		<div id="chart_temp3"></div>
+		<div id="chart_acc_x"></div>
+		<div id="chart_acc_y"></div>
+		<div id="chart_acc_z"></div>
+		<div id="chart_temp_motor"></div>
+		<div id="chart_velocidade"></div>
+		<div id="chart_rpm"></div>
+		<div id="chart_volante"></div>
 
 
 </body>
