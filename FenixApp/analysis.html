@@ -13,15 +13,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
-        #chart_susp1, #chart_susp2, #chart_susp3, #chart_susp4, #chart_acc_x, #chart_acc_y, #chart_acc_z, #chart_rpm, #chart_temp1, #chart_temp2, #chart_temp3, #chart_temp_motor, #chart_velocidade, #chart_volante {
-			margin: 10px auto;
-		}
-
-		#graph_columns
-		{
-			max-width: 30%;
-			border: 1px solid black;
-			display: inline;
+        #text{
+			text-align: center;
+			text-transform: uppercase;
+			color: #f7d000;
+			text-shadow: 1px 1px #000000;
+			font-size: 24px;
 		}
 		
         .navbar {
@@ -50,18 +47,287 @@
 <body>
 
     <script type="module">
+		
+		const max_frequency = 6;
+		
+		var full_json;
+		var keys;
+		//var date;
+		var timestamp_count = 1000/max_frequency;
+		var chart;
+		
+		var data_susp1 = [];
+        var data_susp2 = [];
+        var data_susp3 = [];
+        var data_susp4 = [];
+		var data_temp1 = [];
+		var data_temp2 = [];
+		var data_temp3 = [];
+		var data_rpm = [];
+		var data_velocidade = [];
+		var data_temp_motor = [];
+		var data_volante = [];
+		var data_acc_x = [];
+		var data_acc_y = [];
+		var data_acc_z = [];
+		var data_timestamp = [];
+		var data_date = [];
 	
 		$(document).ready(function(){
-		  $("button").click(function(){
-			$.getJSON("https://fenix-racing-bot-default-rtdb.firebaseio.com/packages.json", function(results){
-			  $.each(results, function(index){
-				$("#text").append(JSON.stringify(results) + " ");
-			  });
-			});
-		  });
+			gerador_supimpa();
+		});
+		
+		$("button").click(function(){
+			gerador_supimpa();
 		});
 		
 		
+		function gerador_supimpa(){
+			data_susp1 = [];
+			data_susp2 = [];
+			data_susp3 = [];
+			data_susp4 = [];
+			data_temp1 = [];
+			data_temp2 = [];
+			data_temp3 = [];
+			data_rpm = [];
+			data_velocidade = [];
+			data_temp_motor = [];
+			data_volante = [];
+			data_acc_x = [];
+			data_acc_y = [];
+			data_acc_z = [];
+			data_timestamp = [];
+			data_date = [];
+			
+			$.getJSON("https://fenix-racing-bot-default-rtdb.firebaseio.com/packages.json", function(full_json){
+				//JSON.stringify(full_json);
+				
+				keys = Object.keys(full_json)
+				
+				if(keys[0] == "aastart")
+				{
+					//$("#text").append((full_json["aastart"]).acc_x + " ");
+					keys.shift();
+				}
+				
+				for(let idx = 0; idx < keys.length; idx++)
+				{
+					data_susp1.push(full_json[keys[idx]].susp1);
+					data_susp2.push(full_json[keys[idx]].susp2);
+					data_susp3.push(full_json[keys[idx]].susp3);
+					data_susp4.push(full_json[keys[idx]].susp4);
+					
+					data_temp1.push(full_json[keys[idx]].temp1);
+					data_temp2.push(full_json[keys[idx]].temp2);
+					data_temp3.push(full_json[keys[idx]].temp3);
+					
+					data_rpm.push(full_json[keys[idx]].rpm);
+					data_velocidade.push(full_json[keys[idx]].velocidade);
+					data_volante.push(full_json[keys[idx]].volante);
+					data_temp_motor.push(full_json[keys[idx]].temp_motor);
+					
+					data_acc_x.push(full_json[keys[idx]].acc_x);
+					data_acc_y.push(full_json[keys[idx]].acc_y);
+					data_acc_z.push(full_json[keys[idx]].acc_z);	
+					
+					if(idx > 0)
+					{
+						if(full_json[keys[idx]].timestamp*1000 == full_json[keys[idx-1]].timestamp*1000)
+						{
+							data_timestamp.push((full_json[keys[idx]].timestamp*1000)+timestamp_count);
+							timestamp_count = timestamp_count + 1000/max_frequency;
+						}
+						else
+						{
+							data_timestamp.push(full_json[keys[idx]].timestamp*1000);
+							timestamp_count = 1000/max_frequency;
+						}
+					}
+					else
+					{
+					data_timestamp.push(full_json[keys[idx]].timestamp*1000);
+					}
+
+					//date = new Date((full_json[keys[idx]].timestamp)*1000);
+					//data_date.push(date.toLocaleDateString("pt-BR"));
+					//$("#text").append(full_json[keys[idx]].timestamp*1000 + " ");
+				}
+				
+			});
+			
+			var options_susp = {
+				  series: [{
+					name: "Frontal-Esquerda",
+					data: data_susp1
+				},
+				{
+					name: "Frontal-Direita",
+					data: data_susp2
+				},
+				{
+					name: "Traseira-Esquerda",
+					data: data_susp3
+				},
+				{
+					name: "Traseira-Direita",
+					data: data_susp4
+				}],
+				  chart: {
+				  height: 350,
+				  type: 'line',
+				  id: 'susp',
+				  group: 'telemetry',
+				  zoom: {
+					enabled: true
+				  }
+				},
+				dataLabels: {
+				  enabled: false
+				},
+				stroke: {
+				  curve: 'straight'
+				},
+				title: {
+				  text: 'Análise da Suspensão',
+				  align: 'left'
+				},
+				grid: {
+				  row: {
+					colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+					opacity: 0.5
+				  },
+				},
+				xaxis: {
+					type: 'datetime',
+					categories: data_timestamp,
+				},
+				stroke: {
+					show: true,
+					//curve: 'smooth',
+					lineCap: 'butt',
+					colors: undefined,
+					width: 1,
+					dashArray: 0,
+				}
+			};
+			
+			var options_temp = {
+				  series: [{
+					name: "Temperatura Interna do Pneu",
+					data: data_temp1
+				},
+				{
+					name: "Temperatura Central do Pneu",
+					data: data_temp2
+				},
+				{
+					name: "Temperatura Externa do Pneu",
+					data: data_temp3
+				}],
+				  chart: {
+				  height: 350,
+				  type: 'line',
+				  id: 'temp',
+				  group: 'telemetry',
+				  zoom: {
+					enabled: true
+				  }
+				},
+				dataLabels: {
+				  enabled: false
+				},
+				stroke: {
+				  curve: 'straight'
+				},
+				title: {
+				  text: 'Análise da Temperatura do Pneu',
+				  align: 'left'
+				},
+				grid: {
+				  row: {
+					colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+					opacity: 0.5
+				  },
+				},
+				xaxis: {
+					type: 'datetime',
+					categories: data_timestamp,
+				},
+				stroke: {
+					show: true,
+					//curve: 'smooth',
+					lineCap: 'butt',
+					colors: undefined,
+					width: 1,
+					dashArray: 0,
+				}
+			};
+
+			var options_others = {
+				  series: [{
+					name: "RPM",
+					data: data_rpm
+				},
+				{
+					name: "Velocidade média",
+					data: data_velocidade
+				},
+				{
+					name: "Temperatura do motor",
+					data: data_temp_motor
+				},
+				{
+					name: "Volante",
+					data: data_volante
+				}],
+				  chart: {
+				  height: 350,
+				  type: 'line',
+				  id: 'others',
+				  group: 'telemetry',
+				  zoom: {
+					enabled: true
+				  }
+				},
+				dataLabels: {
+				  enabled: false
+				},
+				stroke: {
+				  curve: 'straight'
+				},
+				title: {
+				  text: 'Miscelânia',
+				  align: 'left'
+				},
+				grid: {
+				  row: {
+					colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+					opacity: 0.5
+				  },
+				},
+				xaxis: {
+					type: 'datetime',
+					categories: data_timestamp,
+				},
+				stroke: {
+					show: true,
+					//curve: 'smooth',
+					lineCap: 'butt',
+					colors: undefined,
+					width: 1,
+					dashArray: 0,
+				}
+			};
+			
+			chart = new ApexCharts(document.querySelector("#chart_susp"), options_susp);
+			chart.render();
+			chart = new ApexCharts(document.querySelector("#chart_temp"), options_temp);
+			chart.render();
+			chart = new ApexCharts(document.querySelector("#chart_others"), options_others);
+			chart.render();
+		};
+
 
     </script>
 
@@ -86,10 +352,12 @@
 		</ul>
 	  </div>
 	</nav>
-	
-	<button>Get JSON data</button>
 
-	<div id="text"></div>
+	<div id="text"> Análise do banco de dados Fênix Racing </div>
+	<button>Atualizar página</button>
+	<div id="chart_susp"></div>
+	<div id="chart_temp"></div>
+	<div id="chart_others"></div>
 
 
 </body>
