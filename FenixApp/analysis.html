@@ -117,7 +117,7 @@
 					if(idx > 0)
 					{
 				
-					if(full_json[keys[idx]].timestamp*1000 == (data_timestamp[idx-1]+timestamp-50))//full_json[keys[idx-1]].timestamp*1000)
+					if(full_json[keys[idx]].timestamp*1000 == (data_timestamp[idx-1]+timestamp_count-50))//full_json[keys[idx-1]].timestamp*1000)
 						{
 							data_timestamp.push((full_json[keys[idx]].timestamp*1000)+timestamp_count);
 							timestamp_count = timestamp_count+50;
