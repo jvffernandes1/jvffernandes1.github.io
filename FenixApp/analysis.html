@@ -53,7 +53,7 @@
 		var full_json;
 		var keys;
 		//var date;
-		var timestamp_count = 10;
+		var timestamp_count = 50;
 		var chart;
 		
 		var data_susp1 = [];
@@ -117,9 +117,28 @@
 					if(idx > 0)
 					{
 				
-					if(full_json[keys[idx]].timestamp*1000 == full_json[keys[idx-1]].timestamp*1000)
+					if(full_json[keys[idx]].timestamp*1000 == (data_timestamp[idx-1]+timestamp-50))//full_json[keys[idx-1]].timestamp*1000)
 						{
-							timestamp_count = timestamp_count + 1;
+							data_timestamp.push((full_json[keys[idx]].timestamp*1000)+timestamp_count);
+							timestamp_count = timestamp_count+50;
+							
+							data_susp1.push(full_json[keys[idx]].susp1);
+							data_susp2.push(full_json[keys[idx]].susp2);
+							data_susp3.push(full_json[keys[idx]].susp3);
+							data_susp4.push(full_json[keys[idx]].susp4);
+							
+							data_temp1.push(full_json[keys[idx]].temp1);
+							data_temp2.push(full_json[keys[idx]].temp2);
+							data_temp3.push(full_json[keys[idx]].temp3);
+							
+							data_rpm.push(full_json[keys[idx]].rpm);
+							data_velocidade.push(full_json[keys[idx]].velocidade);
+							data_volante.push(full_json[keys[idx]].volante);
+							data_temp_motor.push(full_json[keys[idx]].temp_motor);
+							
+							data_acc_x.push(full_json[keys[idx]].acc_x);
+							data_acc_y.push(full_json[keys[idx]].acc_y);
+							data_acc_z.push(full_json[keys[idx]].acc_z);
 						}
 						else
 						{
