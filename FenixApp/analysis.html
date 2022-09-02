@@ -53,7 +53,7 @@
 		var full_json;
 		var keys;
 		//var date;
-		var timestamp_count = 1;
+		var timestamp_count = 10;
 		var chart;
 		
 		var data_susp1 = [];
@@ -136,12 +136,12 @@
 						if(full_json[keys[idx]].timestamp*1000 == full_json[keys[idx-1]].timestamp*1000)
 						{
 							data_timestamp.push((full_json[keys[idx]].timestamp*1000)+timestamp_count);
-							timestamp_count = timestamp_count + 1;
+							timestamp_count = timestamp_count + 10;
 						}
 						else
 						{
 							data_timestamp.push(full_json[keys[idx]].timestamp*1000);
-							timestamp_count = timestamp_count + 1;
+							timestamp_count = 0;
 						}
 					}
 					else
