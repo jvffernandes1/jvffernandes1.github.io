@@ -144,6 +144,10 @@
 							timestamp_count = 0;
 						}
 					}
+					if(timestamp_count > 900)
+					{
+						timestamp_count = 0;
+					}
 					else
 					{
 					data_timestamp.push(full_json[keys[idx]].timestamp*1000);
