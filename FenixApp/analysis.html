@@ -53,7 +53,7 @@
 		var full_json;
 		var keys;
 		//var date;
-		var timestamp_count = 50;
+		var timestamp_count = 10;
 		var chart;
 		
 		var data_susp1 = [];
@@ -110,62 +110,30 @@
 					//$("#text").append((full_json["aastart"]).acc_x + " ");
 					keys.shift();
 				}
-				
-				for(let idx = 0; idx < keys.length; idx++)
-				{
-				
-					if(idx > 0)
-					{
-				
-					if(full_json[keys[idx]].timestamp*1000 == (data_timestamp[idx-1]+timestamp_count-50))//full_json[keys[idx-1]].timestamp*1000)
-						{
-							data_timestamp.push((full_json[keys[idx]].timestamp*1000)+timestamp_count);
-							timestamp_count = timestamp_count+50;
-							
-							data_susp1.push(full_json[keys[idx]].susp1);
-							data_susp2.push(full_json[keys[idx]].susp2);
-							data_susp3.push(full_json[keys[idx]].susp3);
-							data_susp4.push(full_json[keys[idx]].susp4);
-							
-							data_temp1.push(full_json[keys[idx]].temp1);
-							data_temp2.push(full_json[keys[idx]].temp2);
-							data_temp3.push(full_json[keys[idx]].temp3);
-							
-							data_rpm.push(full_json[keys[idx]].rpm);
-							data_velocidade.push(full_json[keys[idx]].velocidade);
-							data_volante.push(full_json[keys[idx]].volante);
-							data_temp_motor.push(full_json[keys[idx]].temp_motor);
-							
-							data_acc_x.push(full_json[keys[idx]].acc_x);
-							data_acc_y.push(full_json[keys[idx]].acc_y);
-							data_acc_z.push(full_json[keys[idx]].acc_z);
-						}
-						else
-						{
-							data_timestamp.push(full_json[keys[idx]].timestamp*1000);
-							timestamp_count = 0;
-							
-							data_susp1.push(full_json[keys[idx]].susp1);
-							data_susp2.push(full_json[keys[idx]].susp2);
-							data_susp3.push(full_json[keys[idx]].susp3);
-							data_susp4.push(full_json[keys[idx]].susp4);
-							
-							data_temp1.push(full_json[keys[idx]].temp1);
-							data_temp2.push(full_json[keys[idx]].temp2);
-							data_temp3.push(full_json[keys[idx]].temp3);
-							
-							data_rpm.push(full_json[keys[idx]].rpm);
-							data_velocidade.push(full_json[keys[idx]].velocidade);
-							data_volante.push(full_json[keys[idx]].volante);
-							data_temp_motor.push(full_json[keys[idx]].temp_motor);
-							
-							data_acc_x.push(full_json[keys[idx]].acc_x);
-							data_acc_y.push(full_json[keys[idx]].acc_y);
-							data_acc_z.push(full_json[keys[idx]].acc_z);
-							
-						}
-					}
 
+				for(let idx = 0; idx < keys.length; idx++)
+				{		
+					data_timestamp.push(full_json[keys[idx]].timestamp*1000+timestamp_count);
+					timestamp_count = timestamp_count+10;
+					
+					data_susp1.push(full_json[keys[idx]].susp1);
+					data_susp2.push(full_json[keys[idx]].susp2);
+					data_susp3.push(full_json[keys[idx]].susp3);
+					data_susp4.push(full_json[keys[idx]].susp4);
+					
+					data_temp1.push(full_json[keys[idx]].temp1);
+					data_temp2.push(full_json[keys[idx]].temp2);
+					data_temp3.push(full_json[keys[idx]].temp3);
+					
+					data_rpm.push(full_json[keys[idx]].rpm);
+					data_velocidade.push(full_json[keys[idx]].velocidade);
+					data_volante.push(full_json[keys[idx]].volante);
+					data_temp_motor.push(full_json[keys[idx]].temp_motor);
+					
+					data_acc_x.push(full_json[keys[idx]].acc_x);
+					data_acc_y.push(full_json[keys[idx]].acc_y);
+					data_acc_z.push(full_json[keys[idx]].acc_z);
+					
 					//date = new Date((full_json[keys[idx]].timestamp)*1000);
 					//data_date.push(date.toLocaleDateString("pt-BR"));
 					//$("#text").append(full_json[keys[idx]].timestamp*1000 + " ");
@@ -219,6 +187,12 @@
 					type: 'datetime',
 					categories: data_timestamp,
 					labels: {
+						datetimeFormatter: {
+							year: 'yyyy',
+							month: 'MMM \'yy',
+							day: 'dd MMM',
+							hour: 'HH:mm:ss:fff'
+						  },
 						format: 'mm:ss:fff',
 					  }
 				},
