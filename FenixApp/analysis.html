@@ -118,10 +118,10 @@
 					data_timestamp.push(full_json[keys[idx]].timestamp*1000+timestamp_count);
 					timestamp_count = timestamp_count+10;
 					
-					data_susp1.push(parseFloat((full_json[keys[idx]].susp1)*susp_factor)).toFixed(2);
-					data_susp2.push(parseFloat((full_json[keys[idx]].susp2)*susp_factor)).toFixed(2);
-					data_susp3.push(parseFloat((full_json[keys[idx]].susp3)*susp_factor)).toFixed(2);
-					data_susp4.push(parseFloat((full_json[keys[idx]].susp4)*susp_factor)).toFixed(2);
+					data_susp1.push(parseFloat((full_json[keys[idx]].susp1)*susp_factor).toFixed(2));
+					data_susp2.push(parseFloat((full_json[keys[idx]].susp2)*susp_factor).toFixed(2));
+					data_susp3.push(parseFloat((full_json[keys[idx]].susp3)*susp_factor).toFixed(2));
+					data_susp4.push(parseFloat((full_json[keys[idx]].susp4)*susp_factor).toFixed(2));
 					
 					data_temp1.push(full_json[keys[idx]].temp1);
 					data_temp2.push(full_json[keys[idx]].temp2);
