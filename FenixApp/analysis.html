@@ -72,6 +72,7 @@
 		var data_acc_z = [];
 		var data_timestamp = [];
 		var data_date = [];
+		var susp_factor = 0.02932551319; // x = (30/1023)
 	
 		$(document).ready(function(){
 			gerador_supimpa();
@@ -99,6 +100,7 @@
 			data_acc_z = [];
 			data_timestamp = [];
 			data_date = [];
+		
 			
 			$.getJSON("https://fenix-racing-bot-default-rtdb.firebaseio.com/packages.json", function(full_json){
 				//JSON.stringify(full_json);
@@ -116,10 +118,10 @@
 					data_timestamp.push(full_json[keys[idx]].timestamp*1000+timestamp_count);
 					timestamp_count = timestamp_count+10;
 					
-					data_susp1.push(full_json[keys[idx]].susp1);
-					data_susp2.push(full_json[keys[idx]].susp2);
-					data_susp3.push(full_json[keys[idx]].susp3);
-					data_susp4.push(full_json[keys[idx]].susp4);
+					data_susp1.push((full_json[keys[idx]].susp1)/susp_factor);
+					data_susp2.push((full_json[keys[idx]].susp2)/susp_factor);
+					data_susp3.push((full_json[keys[idx]].susp3)/susp_factor);
+					data_susp4.push((full_json[keys[idx]].susp4)/susp_factor);
 					
 					data_temp1.push(full_json[keys[idx]].temp1);
 					data_temp2.push(full_json[keys[idx]].temp2);
