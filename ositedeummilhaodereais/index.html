@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>O site de 1 milhão de reais.</title>
+    <style>
+        body {
+            background-color: gray;
+			font-size: 12px;
+        }
+        .tooltip {
+            position: absolute;
+            background-color: black;
+            color: white;
+            padding: 5px;
+			border: 1px solid red;
+            border-radius: 5px;
+			border-color: red;
+            display: none;
+        }
+		.menu {
+			background-color: #333333;
+			color: white;
+			overflow: hidden;
+			position: fixed;
+			top: 0;
+			width: 100%;
+		}
+		.menu a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 10px 16px;
+			text-decoration: none;
+		}
+		.menu a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+    </style>
+</head>
+<body>
+	<div class="menu">
+		<a href="https://www.instagram.com/ositedeummilhaodereais/">Contato!</a>
+		<a href="comofunciona.html">Como o site funciona?</a>
+	</div>
+	<div style="padding:20px;margin-top:30px;height:1500px;">
+		<center>
+			<img src="img/background.png" alt="Imagem total" usemap="#1milha" width="1000" height="1000">
+			<div id="tooltip" class="tooltip"></div>
+		</center>
+		<map name="1milha" id="mapa"></map>
+
+    <script>
+        const messages = {
+            1001: 'Mensagem especial para o pixel 1001',
+            250045: 'Aqui está o pixel 250045',
+            987654: 'Surpresa no pixel 987654'
+            // Adicione mais entradas conforme necessário
+        };
+
+        // Função para mostrar o tooltip
+        function showTooltip(event, pixelNumber) {
+            const tooltip = document.getElementById('tooltip');
+            const message = messages[pixelNumber] || 'O pixel ' + pixelNumber + ' está disponível! Compre agora mesmo!';
+            tooltip.innerText = message;
+
+            // Ajusta a posição do tooltip
+            const pageHeight = document.documentElement.clientHeight;
+            const tooltipHeight = tooltip.offsetHeight;
+            const mouseY = event.pageY;
+
+            if (mouseY + tooltipHeight > pageHeight) {
+                tooltip.style.top = (mouseY - tooltipHeight - 10) + 'px';
+            } else {
+                tooltip.style.top = (mouseY + 10) + 'px';
+            }
+
+            tooltip.style.left = (event.pageX + 10) + 'px';
+            tooltip.style.display = 'block';
+        }
+
+        // Função para esconder o tooltip
+        function hideTooltip() {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.style.display = 'none';
+        }
+
+        // Função para gerar as áreas dinamicamente
+        function createMapAreas() {
+            const map = document.getElementById('mapa');
+            for (let y = 0; y < 1000; y++) {
+                for (let x = 0; x < 1000; x++) {
+                    const area = document.createElement('area');
+                    const pixelNumber = y * 1000 + x + 1;
+                    area.shape = 'rect';
+                    area.coords = `${x},${y},${x + 1},${y + 1}`;
+                    area.href = '#';
+                    area.alt = 'Pixel ' + pixelNumber;
+                    area.onmouseover = (event) => showTooltip(event, pixelNumber);
+                    area.onmouseout = hideTooltip;
+                    map.appendChild(area);
+                }
+            }
+        }
+
+        // Chama a função para gerar as áreas ao carregar a página
+        window.onload = createMapAreas;
+    </script>
+</body>
+</html>
