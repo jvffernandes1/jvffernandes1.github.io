@@ -38,12 +38,14 @@ print("Pixels vendidos: " + str(pixel_counter))
 print("Pixels para vender: " + str(1000000 - pixel_counter))
 
 # Encontrar o link específico e atualizar o texto
-link = soup.find('a', href="#")
+link = soup.find('a', {'id': 'buy'})
+print(link.text)
 if link and "Pixels comprados:" in link.text:
     new_value = pixel_counter
     link.string = f"Pixels comprados: {new_value}"
+link = soup.find('a', {'id': 'sell'})
 if link and "Pixels disponiveis:" in link.text:
-    new_value = pixel_counter
+    new_value = 1000000 - pixel_counter
     link.string = f"Pixels disponiveis: {new_value}"
 
 # Salvar o arquivo HTML atualizado
