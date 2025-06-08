@@ -2,8 +2,9 @@
     --cor-principal: #2C3639;
     --cor-secundaria: #3F4E4F;
     --cor-texto: #DCD7C9;
+    --cor-link_hover: #dcc797;
     --cor-destaque: #A27B5C;
-    --cor_menu: #1b2225;
+    --cor-menu: #1b2225;
 
     --menu_tamanho: 80px;
 
@@ -24,7 +25,7 @@ body {
 
 .barra_nav {
     overflow: hidden;
-    background-color: var(--cor_menu);
+    background-color: var(--cor-menu);
     position: fixed;
     top: 0;
     width: 100%;
@@ -33,6 +34,7 @@ body {
     display: flex;
     align-items: center;     /* centraliza horizontalmente */
     z-index: 1;
+    border-bottom: 2px solid var(--cor-destaque); /* opcional */
 }
 
 .barra_esq {
@@ -51,7 +53,7 @@ body {
 }
 
 .barra_esq a:hover {
-    text-decoration: white;
+    color: var(--cor-link_hover); /* define essa variável se quiser um efeito */
 }
 
 .barra_dir {
@@ -202,4 +204,25 @@ label:active:after{
 .timeline-content p {
   margin: 5px 0 0;
   line-height: 1.6;
+}
+
+.footer {
+    background-color: var(--cor-menu);
+    color: var(--cor-texto); /* ou branco, se preferir */
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 100px;
+    border-top: 2px solid var(--cor-destaque); /* opcional */
+}
+
+.footer a {
+    color: var(--cor-texto);
+    text-decoration: none;
+    margin: 0 8px;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--cor-link_hover); /* define essa variável se quiser um efeito */
 }
