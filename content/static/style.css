@@ -32,6 +32,7 @@ body {
     border: 0;
     display: flex;
     align-items: center;     /* centraliza horizontalmente */
+    z-index: 1;
 }
 
 .barra_esq {
@@ -47,6 +48,10 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+
+.barra_esq a:hover {
+    text-decoration: white;
 }
 
 .barra_dir {
@@ -111,7 +116,7 @@ label:active:after{
 .class_start {
     background-color: var(--cor-texto);
     width: 100%;
-    height: 600px;
+    height: 500px;
     display: flex;                  /* ativar flexbox */
     align-items: center;           /* alinha os itens verticalmente */
     justify-content: center;       /* centraliza horizontalmente */
@@ -122,7 +127,7 @@ label:active:after{
     width: 15%;
     aspect-ratio: 1 / 1;           /* mantém imagem quadrada */
     background-color: var(--cor-principal);
-    border: 5px solid var(--cor-principal);
+    border: 10px solid var(--cor-principal);
     border-radius: 1000px;
     overflow: hidden;              /* corta bordas da imagem */
     display: flex;
@@ -142,4 +147,59 @@ label:active:after{
     padding: 50px;
     border-radius: 20px;
     line-height: 1.8;
+    text-align: justify;
+}
+
+.class_timeline {
+  background-color: var(--cor-principal);
+  padding: 60px 20px;
+  position: relative;
+}
+
+#timeline_title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.timeline-container {
+    position: relative;
+    margin: 0 auto;
+    padding-left: 40px;
+    border-left: 3px solid var(--cor-secundaria);
+    max-width: 60%;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--cor-principal);
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.timeline-content {
+  background-color: var(--cor-destaque);
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+  color: var(--cor-principal);
+}
+
+.timeline-content p {
+  margin: 5px 0 0;
+  line-height: 1.6;
 }
