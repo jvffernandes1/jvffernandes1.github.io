@@ -1,0 +1,16 @@
+{
+  "pt": {
+    "menu_inicio": "INICIO",
+    "menu_educacao": "EDUCAÇÃO",
+    "menu_profissional": "PROFISSIONAL",
+    "menu_projetos": "PROJETOS",
+    "whoami": "Olá, meu nome é <strong>João Victor</strong> e sou engenheiro eletricista formado pela UNESP de Ilha Solteira. Atualmente, trabalho no setor de óleo e gás na SBM Offshore, atuando com inteligência operacional e monitoramento preditivo de equipamentos em plataformas FPSO. Tenho grande interesse por análise de dados, Python, automação industrial e tecnologia de ponta aplicada à engenharia. Além disso, gosto de desafios, aprender coisas novas e desenvolver soluções que realmente fazem a diferença. Fora do ambiente profissional, sou apaixonado por finanças, esportes e tecnologia — e quando posso, estou jogando ou estudando algo novo."
+  },
+  "en": {
+    "menu_inicio": "START",
+    "menu_educacao": "EDUCATION",
+    "menu_profissional": "PROFESSIONAL",
+    "menu_projetos": "PROJECTS",
+    "whoami": "Hello, my name is João Victor and I’m an electrical engineer graduated from UNESP (São Paulo State University). I currently work in the oil and gas industry at SBM Offshore, focusing on operational intelligence and predictive monitoring of equipment on FPSO platforms. I’m passionate about data analysis, Python, industrial automation, and cutting-edge technology applied to engineering. I enjoy solving complex problems, learning continuously, and developing solutions that deliver real impact. Outside of work, I’m into finance, tech, and sports — and I’m always up for a good game or diving into something new to learn."
+  }
+}

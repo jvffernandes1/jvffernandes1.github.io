@@ -1,198 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👷 João V F Fernandes 💡</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.12.0/framer-motion.umd.min.js"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1a202c;
-            color: white;
-            scroll-behavior: smooth;
-        }
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #2d3748;
-            padding: 10px 20px;
-            display: flex;
-            gap: 20px;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .navbar a:hover {
-            color: #63b3ed;
-        }
-        .language-toggle {
-            position: fixed;
-            top: 10px;
-            right: 20px;
-            width: 60px;
-            height: 30px;
-            background-color: #2d3748;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 2px;
-            cursor: pointer;
-        }
-        .language-toggle img {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-        }
-        .toggle-btn {
-            width: 26px;
-            height: 26px;
-            background-color: white;
-            border-radius: 50%;
-            position: absolute;
-            transition: transform 0.3s ease;
-        }
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-		        .swiper {
-            width: 50%;
-            height: 700px;
-            text-align: center;
-        }
-
-        .swiper-slide {
-            font-size: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Ajusta a posição dos botões de navegação */
-        .swiper-button-prev, .swiper-button-next {
-            color: black; /* Muda a cor dos botões */
-        }
-
-        /* Estiliza os pontinhos de paginação */
-        .swiper-pagination-bullet {
-            background: gray;
-            opacity: 0.5;
-        }
-
-        .swiper-pagination-bullet-active {
-            background: black;
-            opacity: 1;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <a href="#about" data-en="About Me" data-pt="Sobre Mim">About Me</a>
-        <a href="#education" data-en="Education" data-pt="Educação">Education</a>
-        <a href="#experience" data-en="Professional Experience" data-pt="Experiência Profissional">Professional Experience</a>
-        <a href="#certifications" data-en="Courses & Certifications" data-pt="Cursos & Certificações">Courses & Certifications</a>
-        <a href="#projects" data-en="Projects" data-pt="Projetos">Projects</a>
-    </nav>
-    <div class="language-toggle" id="languageSwitcher">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Português">
-        <div class="toggle-btn" id="toggleBtn"></div>
-        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English">
-    </div>
-    <section class="h-screen flex flex-col items-center justify-center text-center p-4">
-        <img src="img/perfil.jpg" alt="Profile Picture" class="profile-img">
-        <div id="intro" class="opacity-0 transform scale-90">
-            <h1 class="text-4xl font-bold mb-4" data-en="Welcome!" data-pt="Bem-vindo!">Welcome!</h1>
-            <p class="text-lg mb-6" data-en="Hello, my name is <b>João Fernandes</b>, I'm an Electrical Engineer graduated from UNESP of Ilha Solteira, currently working in the oil and gas sector at SBM Offshore." 
-                data-pt="Olá, meu nome é <b>João Victor</b>, Engenheiro Eletricista formado pela UNESP de Ilha Solteira e atualmente atuo no setor de óleo e gás pela SBM Offshore.">
-                Hello, my name is <b>João Fernandes</b>, I'm an Electrical Engineer graduated from UNESP of Ilha Solteira, currently working in the oil and gas sector at SBM Offshore.
-            </p>
-            <button onclick="scrollToSection('about')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-en="About Me" data-pt="Sobre Mim">About Me</button>
-        </div>
-    </section>
-    <section id="about" class="h-screen flex flex-col items-center justify-center text-center p-4">
-        <h2 class="text-3xl font-bold mb-4" data-en="About Me" data-pt="Sobre Mim">About Me</h2>
-			<p class="text-lg max-w-5xl" data-en="I am an Electrical Engineer graduated from UNESP and currently work as an Asset Surveillance & Intelligence Engineer at SBM Offshore, with 4 years of experience in the oil and gas sector. My mission is to ensure operational reliability and asset integrity in FPSOs through predictive monitoring and advanced data analysis." 
-			   data-pt="Sou Engenheiro Eletricista formado pela UNESP e atuo como Engenheiro de Asset Surveillance & Intelligence na SBM Offshore, com 4 anos de experiência no setor de óleo e gás. Minha missão é garantir a confiabilidade operacional e integridade dos ativos em FPSOs por meio de monitoramento preditivo e análise avançada de dados.">
-				I am an Electrical Engineer graduated from UNESP and currently work as an Asset Surveillance & Intelligence Engineer at SBM Offshore, with 4 years of experience in the oil and gas sector. My mission is to ensure operational reliability and asset integrity in FPSOs through predictive monitoring and advanced data analysis.
-			</p>
-	</section>
-	<section id="education" class="h-screen flex flex-col items-center justify-center text-center p-4">
-        <h2 class="text-3xl font-bold mb-4" data-en="Education" data-pt="Educação">Education</h2>
-			<p class="text-lg max-w-4xl" align="justify">
-				· Bachelor in information technology at UNIVESP, Santos, SP, 2023 – 2026.</br>
-				· Degree in <b>Electrical and Electronic Engineering</b> at UNESP, Ilha Solteira, SP, 2017 – 2023.</br>
-				· IT Technical Course – CTI UNESP, Bauru, SP, 2015 – 2016.</br>
-				· Native Portuguese • <b>Advanced English</b></br>
-			</p>
-	</section>
-	<section id="experience" class="h-screen flex flex-col items-center justify-center text-center p-4">
-        <div class="swiper">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-				<p class="text-base" align="justify">
-					<b>SBM OFFSHORE, Asset Surveillance Intelligence Engineer</b><br>Electrical, Control & Instrumentation • Santos, SP | Mar 2024 – Present<br><br>
-					Throughout my experience, I have developed and implemented advanced data analysis techniques to enhance predictive maintenance strategies, <b><span style="color: orange;">significantly reducing downtime</span></b> for critical offshore systems, including Fire & Gas, Instrumentation, Electrical, and Process Control. Additionally, <b><span style="color: orange;">I optimized preventive maintenance</span></b> protocols by integrating multiple data sources and leveraging real-time analytics, <b><span style="color: orange;">ensuring maximum asset reliability and operational efficiency</span></b>. 
-					<br>
-					I have also led cross-functional collaborations to design and deploy comprehensive asset surveillance frameworks, enabling early failure detection and streamlining maintenance workflows. My work includes conducting in-depth investigations of electrical incidents related to offshore assets, such as motors, transformers, and power distribution systems, identifying root causes, and implementing corrective actions to enhance safety and reliability. Furthermore, I developed and executed the Operations Threat Management (OTM) tool, which enables near real-time monitoring of offshore equipment status, classification of operational functions, tracking of upcoming updates and maintenance activities, as well as providing rundown curves and KPIs to improve offshore threat control.Lastly, I have enhanced alarm management strategies, reducing non-essential alarms on FPSOs, improving operational focus, and minimizing alarm fatigue for control room operators.
-					</p>
-				</div>
-				<div class="swiper-slide">I led the development of a data-driven working group focused on collecting, filtering, and processing offshore pump event data. This initiative optimized maintenance strategies and reduced operational costs across the SBM Brazil Fleet. As a result, significant improvements were made in pump lubrication control methods, and an automated routine for monitoring and status tracking was created.Additionally, I designed and deployed interactive dashboards for ICSS package monitoring, while also developing a comprehensive database for control hardware and software, improving asset visibility and supporting better decision-making.I also established and coordinated a task force to investigate and resolve instrumentation and control events, contributing to increased system reliability and operational efficiency across offshore assets.Furthermore, I automated EX Dashboard reporting by leveraging Python, Excel, and Power BI, streamlining data processing and improving the accuracy and efficiency of reports.Lastly, I led the implementation of the System1 Condition Monitoring software as a project manager for the SBM Santos Fleet, enhancing predictive maintenance capabilities and improving asset performance monitoring.</div>
-				<div class="swiper-slide">Texto 3: Fácil e estiloso!</div>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>👷 João V F Fernandes 💡</title>
+		<link rel="stylesheet" href="content/static/style.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Pinyon+Script&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+		<script src="content/static/lang-update.js" defer></script>
+	</head>
+	<body>
+		<div id="navbar" class="barra_nav">
+			<div id="bar_esq" class="barra_esq">
+				<a href="#inicio" data-key="menu_inicio"></a>
+				<a href="#inicio" data-key="menu_educacao"></a>
+				<a href="#inicio" data-key="menu_profissional"></a>
+				<a href="#inicio" data-key="menu_projetos"></a>
 			</div>
-			<div class="swiper-pagination"></div>
+			<div id="bar_dir" class="barra_dir">
+				<input type="checkbox" id="lang"/>
+				<label for="lang"></label>
+			</div>
 		</div>
-	</section>
-    <script>
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        document.addEventListener("DOMContentLoaded", function() {
-            const intro = document.getElementById("intro");
-            intro.style.opacity = 1;
-            intro.style.transform = "scale(1)";
-            intro.style.transition = "opacity 1s ease-out, transform 1s ease-out";
-
-            const languageSwitcher = document.getElementById("languageSwitcher");
-            const toggleBtn = document.getElementById("toggleBtn");
-            const elements = document.querySelectorAll("[data-en]");
-            let currentLang = "en";
-
-            languageSwitcher.addEventListener("click", function() {
-                currentLang = currentLang === "en" ? "pt" : "en";
-                toggleBtn.style.transform = currentLang === "en" ? "translateX(0)" : "translateX(30px)";
-                elements.forEach(el => {
-                    el.innerHTML = el.getAttribute(`data-${currentLang}`);
-                });
-            });
-        });
-    </script>
-	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-	<script>
-    new Swiper('.swiper', {
-        loop: true,
-        autoplay: { delay: 15000 }, // Avança automaticamente a cada 3 segundos
-        navigation: { 
-            nextEl: '.swiper-button-next', 
-            prevEl: '.swiper-button-prev' 
-        },
-        pagination: { 
-            el: '.swiper-pagination', 
-            clickable: true 
-        }
-    });
-</script>
-</body>
+		<div id="content_box" class="all_content">
+			<div id="content_start" class="class_start">
+				<div id="whoami_img"><img src="img/perfil.jpg"></div>
+				<div id="whoami" data-key="whoami"></div>
+			</div>
+		</div>
+	</body>
 </html>
