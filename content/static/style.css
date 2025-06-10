@@ -27,7 +27,7 @@ body {
     font-family: var(--fonte);
 }
 
-.float{
+.float-whatsapp{
 	position:fixed;
 	width:60px;
 	height:60px;
@@ -39,10 +39,26 @@ body {
 	text-align:center;
     font-size:30px;
     z-index:100;
+    border: 2px solid var(--cor-destaque);
+}
+
+.float-linkedin{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:120px;
+	right:40px;
+	background-color: #0072b1;
+	color:#FFF;
+	border-radius:10px;
+	text-align:center;
+    font-size:30px;
+    z-index:100;
+    border: 2px solid var(--cor-destaque);
 }
 
 .my-float{
-	margin-top:16px;
+	margin-top:14px;
 }
 
 .barra_nav {
@@ -182,9 +198,9 @@ label:active:after{
 
 .timeline-header {
 	display: flex;
-	align-items: center;         /* Alinha verticalmente */
-	justify-content: center;     /* Centraliza no centro da tela */
-	gap: 10px;                   /* Espaço entre título e botão */
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
 	margin-bottom: 30px;
 }
 
@@ -202,14 +218,14 @@ label:active:after{
 }
 
 .sort-icon {
-    color: var(--cor-texto); /* cor normal */
+    color: var(--cor-texto);
     width: 50px;
     height: 50px;
     transition: color 0.3s ease;
 }
 
 .icon-button:hover .sort-icon {
-  color: var(--cor-link_hover); /* cor no hover */
+  color: var(--cor-link_hover);
 }
 
 .timeline-container {
@@ -245,6 +261,10 @@ label:active:after{
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+.timeline-content:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
 .timeline-content h3 {
   margin-top: 0;
   color: var(--cor-principal);
@@ -257,35 +277,87 @@ label:active:after{
 
 .class_education{
     width: 100%;
-    height: 600px;
+    height: 650px;
     background-color: var(--cor-secundaria);
-    padding: 60px 20px;
+    padding: 100px 20px;
     position: relative;
 }
 
 .education-header {
 	display: flex;
-	align-items: center;         /* Alinha verticalmente */
-	justify-content: center;     /* Centraliza no centro da tela */
+	align-items: center;
+	justify-content: center;
+    margin-bottom: 10px;
 }
 
 .education-content {
     display: flex;
-	align-items: center;         /* Alinha verticalmente */
-	justify-content: center;     /* Centraliza no centro da tela */
-    width:100%;
-    height: 300px;
-    border: 1px solid white;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+}
+
+.ed_block {
+    width: 40%;
+    height: auto;
+    border: 1px solid var(--cor-destaque);
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: var(--cor-principal);
+}
+
+.ed_block:hover {
+    border-color: var(--cor-link_hover);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.ed_title {
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	border-bottom: 1px solid var(--cor-link_hover);
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	font-size: 1.1rem;
+}
+
+.ed_text {
+	width: 100%;
+	text-align: justify;
+	font-size: 0.95rem;
+	line-height: 1.7rem;
+	padding: 15px;
+}
+
+.class_professional {
+    width: 100%;
+    height: 650px;
+    background-color: var(--cor-principal);
+    padding: 100px 20px;
+    position: relative;
+}
+
+.professional_header {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    margin-bottom: 10px;
 }
 
 .footer {
     background-color: var(--cor-menu);
-    color: var(--cor-texto); /* ou branco, se preferir */
+    color: var(--cor-texto);
     padding: 30px 20px;
     text-align: center;
     font-size: 14px;
     margin-top: 100px;
-    border-top: 2px solid var(--cor-destaque); /* opcional */
+    border-top: 2px solid var(--cor-destaque);
 }
 
 .footer a {
@@ -296,5 +368,5 @@ label:active:after{
 }
 
 .footer a:hover {
-    color: var(--cor-link_hover); /* define essa variável se quiser um efeito */
+    color: var(--cor-link_hover);
 }

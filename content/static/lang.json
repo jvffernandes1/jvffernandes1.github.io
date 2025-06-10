@@ -21,7 +21,14 @@
     "timeline_titulo7": "2024 - Engenheiro de Inteligência e Monitoramento de Asset (ASI) pela SBM Offshore",
     "timeline_texto7": "Após um ano e um mês atuando como Engenheiro Eletricista pela Radix, tive a oportunidade de retornar à SBM Offshore como Engenheiro de Inteligência e Monitoramento de Asset. Nessa nova posição, assumi a responsabilidade por rotinas preditivas nas disciplinas de elétrica, controle e instrumentação. Durante esse período, aprofundei minhas habilidades em análise de dados, o que me permitiu contribuir para projetos estratégicos, como a substituição de modelos de detecção de fogo e gás com base em dados históricos de falhas. Além disso, fui responsável pelo desenvolvimento da ferramenta Operations Threat Management (OTM), hoje utilizada amplamente na companhia. O OTM coleta, processa e gerencia informações diárias de equipamentos críticos da frota, viabilizando uma resposta ágil e precisa diante dos diversos desafios operacionais enfrentados no ambiente offshore.",
     "education": "Educação",
-    "construct": "Site em construção!"
+    "construct": "Site em construção!",
+    "ed_titulo1": "Graduação em engenharia elétrica - 2017 à 2023 - UNESP",
+    "ed_texto1": "Iniciei minha graduação em Engenharia Elétrica na UNESP de Ilha Solteira - SP em março de 2017, integrando a turma 17.1. Devido ao impacto da pandemia de COVID-19, o curso sofreu alguns atrasos em seu cronograma, sendo concluído em janeiro de 2023, totalizando aproximadamente seis anos de formação.",
+    "ed_titulo2": "Graduação em Tecnologia da Informação (TI) - 2023 à 2026 - UNIVESP",
+    "ed_texto2": "Iniciei minha segunda graduação em 2023, cursando Tecnologia da Informação pela UNIVESP (Universidade Virtual do Estado de São Paulo). A conclusão do curso está prevista para julho de 2026, com titulação como tecnólogo na área.",
+    "ed_titulo3": "Técnico em Informática - 2015 à 2016 (Interrompido) - CTI UNESP",
+    "ed_texto3": "Ingressei no Colégio Técnico Industrial (CTI) da UNESP de Bauru em 2015, no curso técnico em Informática, período noturno. Permanecei na instituição até o início de 2017, quando precisei interromper a formação devido ao início da minha graduação em Engenharia Elétrica na UNESP de Ilha Solteira.",
+    "orgulho_da_pofisson": "Profissional"
   },
   "en": {
     "menu_inicio": "HOME",
@@ -45,6 +52,13 @@
     "timeline_titulo7": "2024 - Asset Surveillance & Intelligence (ASI) Engineer at SBM Offshore",
     "timeline_texto7": "After one year and one month as an Electrical Engineer at Radix, I had the opportunity to return to SBM Offshore as an Asset Intelligence & Surveillance Engineer. In this new role, I became responsible for predictive routines focused on electrical, control, and instrumentation disciplines. Throughout this period, I significantly developed my data analysis skills, which enabled me to support key projects—such as the replacement of fire and gas detection models based on historical failure data. Furthermore, I led the development of the Operations Threat Management (OTM) tool, now widely adopted within the company. OTM collects, processes, and manages daily information on critical fleet equipment, enabling fast and accurate responses to various challenges faced in the offshore operational environment.",
     "education": "Education",
-    "construct": "Website in development."
+    "construct": "Website in development.",
+    "ed_titulo1": "Bachelor's degree in electrical engineering - 2017 to 2023 - UNESP",
+    "ed_texto1": "I began my undergraduate studies in Electrical Engineering at UNESP – Ilha Solteira campus (São Paulo, Brazil) in March 2017, joining class 17.1. Due to the impact of the COVID-19 pandemic, the academic schedule faced some delays, and I completed my degree in January 2023, resulting in approximately six years of total study duration.",
+    "ed_titulo2": "Information Technology (IT) graduation - 2023 to 2026 - UNIVESP",
+    "ed_texto2": "I began my second undergraduate degree in 2023, pursuing a program in Information Technology at UNIVESP (Virtual University of the State of São Paulo). I am expected to graduate in July 2026 with a degree as an IT technologist.",
+    "ed_titulo3": "Technical Course in Information Technology – 2015 to 2016 (Incomplete) – CTI UNESP",
+    "ed_texto3": "I enrolled in the Technical Industrial School (CTI) at UNESP Bauru in 2015, attending the evening program in Information Technology. I remained in the course until early 2017, when I had to discontinue in order to begin my undergraduate studies in Electrical Engineering at UNESP Ilha Solteira.",
+    "orgulho_da_pofisson": "Professional"
   }
 }
