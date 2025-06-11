@@ -129,8 +129,64 @@
 			</div>
 			<!-- SEÇÃO 04: PROFISSIONAL -->
 			<div id="professional" class="class_professional">
-				<div id="pr_header" class="professional_header">
-					<h1 data-key="orgulho_da_pofisson"></h1>
+			  <div id="pr_header" class="professional_header">
+				<h1 data-key="orgulho_da_pofisson"></h1>
+			  </div>
+
+				<div class="professional_container">
+				<!-- Coluna esquerda -->
+					<div class="pr_left">
+						<div class="experience-block" onclick="showDetails('exp1')" data-key="exptitulo1"></div>
+						<div class="experience-block" onclick="showDetails('exp2')" data-key="exptitulo2"></div>
+						<div class="experience-block" onclick="showDetails('exp3')" data-key="exptitulo3"></div>
+						<div class="experience-block" onclick="showDetails('exp4')" data-key="exptitulo4"></div>
+						<div class="experience-block" onclick="showDetails('exp5')" data-key="exptitulo5"></div>
+						<div class="experience-block" onclick="showDetails('exp6')" data-key="exptitulo6"></div>
+						<div class="experience-block selected" onclick="showDetails('exp7')" data-key="exptitulo7"></div>
+					</div>
+
+					<!-- Linha vertical decorativa -->
+					<div class="pr_divider">
+						<div class="vertical-line"></div>
+						<div class="circle bottom"></div>
+						<div class="circle bottom"></div>
+						<div class="circle bottom"></div>
+					</div>
+
+					<!-- Coluna direita -->
+					<div class="pr_right">
+						<div class="experience-detail-container">
+							<div class="experience-detail" id="exp1">
+								<img src="img/casa_do_real.jpg" alt="Foto da Casa do Real" class="exp-image">
+								<div data-key="exptexto1"></div>
+							</div>
+							<div class="experience-detail" id="exp2">
+								<img src="img/dti_unesp.png" alt="Foto do DTI Unesp" class="exp-image">
+								<div data-key="exptexto2"></div>
+							</div>
+							<div class="experience-detail" id="exp3">
+								<img src="img/eldorado.JPG" alt="Foto no instituto Eldorado" class="exp-image">
+								<div data-key="exptexto3"></div>
+							</div>
+							<div class="experience-detail" id="exp4">
+							  <img src="img/estagio_sbm.png" alt="Foto na SBM Offshore" class="exp-image">
+							  <div data-key="exptexto4"></div>
+						  	</div>
+							<div class="experience-detail" id="exp5">
+							  <img src="img/ambar_eng.png" alt="Ambar Engenharia" class="exp-image">
+							  <div data-key="exptexto5"></div>
+						  	</div>
+							<div class="experience-detail" id="exp6">
+							  <img src="img/radix.png" alt="Foto de roupas da Radix" class="exp-image">
+							  <div data-key="exptexto6"></div>
+						  	</div>
+							<div class="experience-detail show" id="exp7">
+							  <img src="img/ASI.png" alt="De volta a SBM Offshore!" class="exp-image">
+							  <div data-key="exptexto7"></div>
+						  	</div>
+
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- SEÇÃO 05: PROJETOS -->
@@ -147,7 +203,8 @@
 				</p>
 			</div>
 		</footer>
+		<script src="content/static/lang-update.js" defer></script>
+		<script src="content/static/order-timeline.js" defer></script>
+		<script src="content/static/experience_details.js" defer></script>
 	</body>
-	<script src="content/static/lang-update.js" defer></script>
-	<script src="content/static/order-timeline.js" defer></script>
 </html>
