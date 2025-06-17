@@ -10,14 +10,17 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Pinyon+Script&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 		<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "93f9e966418740c09c790a3b2ac8b404"}'></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 	</head>
 	<body>
-		<a href="https://api.whatsapp.com/send?phone=5514991663707&text=Bom dia João!" class="float-whatsapp" target="_blank">
-		<i class="fa fa-whatsapp my-float"></i>
-		<a href="https://www.linkedin.com/in/jvffernandes1" class="float-linkedin" target="_blank">
-		<i class="fa fa-linkedin my-float"></i>
-		</a>
+		<div class="hide_float_buttons">
+			<a href="https://api.whatsapp.com/send?phone=5514991663707&text=Bom dia João!" class="float-whatsapp" target="_blank">
+				<i class="fa-brands fa-whatsapp my-float"></i>
+			</a>
+			<a href="https://www.linkedin.com/in/jvffernandes1" class="float-linkedin" target="_blank">
+				<i class="fa-brands fa-linkedin my-float"></i>
+			</a>
+		</div>
 		<div id="navbar" class="barra_nav">
 			<div id="bar_esq" class="barra_esq">
 				<a href="#content_start" data-key="menu_inicio"></a>
@@ -48,59 +51,59 @@
 					<h1 id="timeline_title" data-key="timeline"></h1>
 				</div>
 				<div id="timelineContainer" class="timeline-container">
-					<div class="timeline-item">
+					<div class="timeline-item timeline-clickable">
 						<div class="timeline-dot"></div>
 						<div class="timeline-content">
 							<h3><div data-key="timeline_titulo1"></div></h3>
-							<p><div data-key="timeline_texto1"></div></p>
+							<p><div data-key="timeline_texto1" class="timeline-text show"></div></p>
 						</div>
 					</div>
 
-					<div class="timeline-item">
+					<div class="timeline-item timeline-clickable">
 						<div class="timeline-dot"></div>
 						<div class="timeline-content">
 							<h3><div data-key="timeline_titulo2"></div></h3>
-							<p><div data-key="timeline_texto2"></div></p>
+							<p><div data-key="timeline_texto2" class="timeline-text"></div></p>
 						</div>
 					</div>
 
-					<div class="timeline-item">
+					<div class="timeline-item timeline-clickable">
 						<div class="timeline-dot"></div>
 						<div class="timeline-content">
 							<h3><div data-key="timeline_titulo3"></div></h3>
-							<p><div data-key="timeline_texto3"></div></p>
+							<p><div data-key="timeline_texto3" class="timeline-text"></div></p>
 						</div>
 					</div>
 
-					<div class="timeline-item">
+					<div class="timeline-item timeline-clickable">
 						<div class="timeline-dot"></div>
 						<div class="timeline-content">
 							<h3><div data-key="timeline_titulo4"></div></h3>
-							<p><div data-key="timeline_texto4"></div></p>
+							<p><div data-key="timeline_texto4" class="timeline-text"></div></p>
 						</div>
 					</div>
 
-					<div class="timeline-item">
+					<div class="timeline-item timeline-clickable">
 						<div class="timeline-dot"></div>
 						<div class="timeline-content">
 							<h3><div data-key="timeline_titulo5"></div></h3>
-							<p><div data-key="timeline_texto5"></div></p>
+							<p><div data-key="timeline_texto5" class="timeline-text"></div></p>
 						</div>
 					</div>
 
-					<div class="timeline-item">
+					<div class="timeline-item timeline-clickable">
 						<div class="timeline-dot"></div>
 						<div class="timeline-content">
 							<h3><div data-key="timeline_titulo6"></div></h3>
-							<p><div data-key="timeline_texto6"></div></p>
+							<p><div data-key="timeline_texto6" class="timeline-text"></div></p>
 						</div>
 					</div>
 
-					<div class="timeline-item">
+					<div class="timeline-item timeline-clickable">
 						<div class="timeline-dot"></div>
 						<div class="timeline-content">
 							<h3><div data-key="timeline_titulo7"></div></h3>
-							<p><div data-key="timeline_texto7"></div></p>
+							<p><div data-key="timeline_texto7" class="timeline-text"></div></p>
 						</div>
 					</div>
 
@@ -203,8 +206,18 @@
 				</p>
 			</div>
 		</footer>
+		<div class="bottom-nav">
+		  <a href="#content_start"><i class="fas fa-home"></i><span>Início</span></a>
+		  <a href="#education"><i class="fas fa-graduation-cap"></i><span>Educação</span></a>
+		  <a href="#professional"><i class="fas fa-briefcase"></i><span>Profissão</span></a>
+			<div id="bar_dir2" class="barra_dir">
+				<input type="checkbox" id="lang2"/>
+				<label for="lang2"></label>
+			</div>
+		</div>
 		<script src="content/static/lang-update.js" defer></script>
 		<script src="content/static/order-timeline.js" defer></script>
 		<script src="content/static/experience_details.js" defer></script>
+		<script src="content/static/expand-timeline.js" defer></script>
 	</body>
 </html>
