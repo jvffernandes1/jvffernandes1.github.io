@@ -698,7 +698,7 @@ label:active:after{
 	position:fixed;
 	width:40px;
 	height:40px;
-	bottom:90%;
+	top:60px;
 	right:10px;
 	background-color:#25d366;
 	color:#FFF;
@@ -713,7 +713,7 @@ label:active:after{
 	position:fixed;
 	width:40px;
 	height:40px;
-	bottom:95%;
+	top:10px;
 	right:10px;
 	background-color: #0072b1;
 	color:#FFF;
