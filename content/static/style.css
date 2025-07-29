@@ -71,7 +71,7 @@ body {
     border: 0;
     display: flex;
     align-items: center;     /* centraliza horizontalmente */
-    z-index: 1;
+    z-index: 999;
     border-bottom: 2px solid var(--cor-destaque); /* opcional */
 }
 
@@ -457,6 +457,7 @@ label:active:after{
     align-items: center;
 	justify-content: center;
     padding-top: 60px;
+    z-index: 0;
 }
 .project_header {
     display: flex;
@@ -472,16 +473,18 @@ label:active:after{
     height: 250px;
     width: 80%;
     padding: 30px;
+    margin: 30px;
     margin-left: 10%;
     display: flex;
 }
+
 .right_project {
     align-items: center;
     justify-content: right;
     height: 250px;
     width: 80%;
     padding: 30px;
-    margin-left: 10%;
+    margin-left: 30px;
     display: flex;
 }
 
@@ -492,13 +495,20 @@ label:active:after{
     background-color: var(--cor-principal);
     float: left;
     position: relative;
+    overflow: hidden;
+    border: 5px solid var(--cor-destaque);
     z-index: 100;
 }
 
+.round_photo:hover {
+    border: 5px solid var(--cor-menu);
+}
+
 .square_pj {
-    height: 230px;
+    height: 270px;
     width: 700px;
     background-color: var(--cor-principal);
+    border: 5px solid var(--cor-destaque);
     float: left;
     position: relative;
     justify-content: right;
@@ -506,9 +516,18 @@ label:active:after{
     z-index: 99;
 }
 
+.tit_pj {
+    width: 575px;
+    height: 10%;
+    color: var(--cor-texto);
+    padding: 15px;
+    text-align: justify;
+    float: right;
+}
+
 .txt_pj {
     width: 575px;
-    height: 100%;
+    height: 90%;
     color: var(--cor-texto);
     padding: 15px;
     text-align: justify;
@@ -538,8 +557,16 @@ label:active:after{
 
 .bottom-nav {
   display: none; /* default: escondido */
+  z-index: 9999;
 }
 
+
+.round_photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* mantém a imagem proporcional e preenche a div */
+  display: block;
+}
 
 @media (max-width: 768px) {
 
