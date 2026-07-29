@@ -8,6 +8,9 @@ function showDetails(id) {
     const selected = document.getElementById(id);
     if (selected) {
       selected.classList.add('show');
+      if (window.innerWidth <= 768) {
+        selected.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     }
 
     // Remove destaque de todos os blocos
@@ -18,8 +21,8 @@ function showDetails(id) {
     // Adiciona destaque no bloco clicado
     const allBlocks = document.querySelectorAll('.experience-block');
     allBlocks.forEach(block => {
-      if (block.getAttribute("onclick").includes(id)) {
+      if (block.getAttribute("onclick") && block.getAttribute("onclick").includes(id)) {
         block.classList.add("selected");
       }
     });
-  }
+}

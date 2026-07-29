@@ -23,9 +23,9 @@ document.getElementById("toggleOrderBtn").addEventListener("click", () => {
 
 // Função para extrair o número final do data-key, ex: timeline_titulo3 => 3
 function getTimelineIndex(item) {
-	const h3 = item.querySelector("h3 div");
-	if (!h3) return 0;
-	const key = h3.getAttribute("data-key");
+	const elem = item.querySelector("h3[data-key]") || item.querySelector("h3 div");
+	if (!elem) return 0;
+	const key = elem.getAttribute("data-key");
 	const match = key && key.match(/\d+$/);
 	return match ? parseInt(match[0]) : 0;
 }
