@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <title>GallyPRO - Ferramenta de Backtest & Gestão de Carteira</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-secondary: #f1f5f9;
+            --cor-texto: #1e293b;
+            --cor-subtexto: #475569;
+            --cor-destaque: #A27B5C;
+            --cor-destaque-hover: #8c684c;
+            --cor-gold: #d97706;
+            --cor-borda: #cbd5e1;
+            --cor-borda-suave: #e2e8f0;
+            --cor-menu: #2C3639;
+            --cor-menu-texto: #DCD7C9;
+            --fonte-principal: "Merriweather Sans", sans-serif;
+            --fonte-titulo: "Quicksand", sans-serif;
+            --sombra-forte: 0 20px 35px -10px rgba(0, 0, 0, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+            --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--cor-texto);
+            font-family: var(--fonte-principal);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* Top Header Navigation */
+        .navbar {
+            background-color: var(--cor-menu);
+            color: var(--cor-menu-texto);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            z-index: 999;
+            border-bottom: 3px solid var(--cor-destaque);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--cor-menu-texto);
+            font-family: var(--fonte-titulo);
+            font-weight: 700;
+            font-size: 1.35rem;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--cor-destaque);
+            object-fit: cover;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--cor-destaque);
+            color: var(--cor-menu-texto);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--cor-destaque);
+            color: #ffffff;
+        }
+
+        /* Main Container */
+        .main-container {
+            margin-top: 70px;
+            padding-bottom: 90px;
+        }
+
+        /* Hero Header */
+        .hero {
+            background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+            padding: 50px 6% 40px 6%;
+            border-bottom: 1px solid var(--cor-borda-suave);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--cor-texto);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: var(--cor-destaque);
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--cor-subtexto);
+            max-width: 850px;
+            margin: 0 auto 25px auto;
+            line-height: 1.7;
+        }
+
+        /* Stack Pills */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: #ffffff;
+            border: 1px solid var(--cor-borda);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--cor-texto);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .tech-tag i {
+            color: var(--cor-destaque);
+        }
+
+        /* Content Layout */
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--cor-texto);
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: var(--cor-subtexto);
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        /* Showcase Cards (Big Screenshots in Focus) */
+        .showcase-list {
+            display: flex;
+            flex-direction: column;
+            gap: 55px;
+        }
+
+        .showcase-item {
+            background: var(--bg-card);
+            border: 1px solid var(--cor-borda);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--sombra-forte);
+            transition: transform 0.3s ease;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .showcase-header-bar {
+            background-color: var(--cor-menu);
+            color: var(--cor-menu-texto);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--fonte-titulo);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot-red { background-color: #ef4444; }
+        .dot-yellow { background-color: #f59e0b; }
+        .dot-green { background-color: #10b981; }
+
+        .showcase-img-container {
+            width: 100%;
+            background-color: #0f172a;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .showcase-img-container img {
+            width: 100%;
+            height: auto;
+            max-height: 580px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.4s ease;
+        }
+
+        .showcase-img-container:hover img {
+            transform: scale(1.02);
+        }
+
+        .img-overlay-hint {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+        }
+
+        .showcase-body {
+            padding: 30px;
+            border-top: 1px solid var(--cor-borda-suave);
+        }
+
+        .showcase-body h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.4rem;
+            color: var(--cor-texto);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .showcase-body h3 i {
+            color: var(--cor-destaque);
+        }
+
+        .showcase-body p {
+            color: var(--cor-subtexto);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Human Project Details Box */
+        .human-about-box {
+            background-color: #ffffff;
+            border: 2px solid var(--cor-destaque);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 55px;
+            box-shadow: var(--sombra-card);
+        }
+
+        .human-about-box h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.5rem;
+            color: var(--cor-texto);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .human-about-box p {
+            color: var(--cor-subtexto);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .human-about-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Floating Return Button */
+        .floating-return-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--cor-destaque);
+            color: #ffffff;
+            padding: 14px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 25px rgba(162, 123, 92, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 990;
+            transition: all 0.3s ease;
+            border: 2px solid #ffffff;
+        }
+
+        .floating-return-btn:hover {
+            background-color: var(--cor-destaque-hover);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(162, 123, 92, 0.6);
+        }
+
+        /* Lightbox Modal (Full Width Scrollable View) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 15px 60px 15px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            cursor: pointer;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 98%;
+            max-width: 1400px;
+            height: auto;
+            max-height: none;
+            border-radius: 8px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+            object-fit: contain;
+            margin: 20px auto;
+            border: 1px solid var(--cor-destaque);
+            cursor: default;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 2.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.7);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--cor-destaque);
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--cor-destaque);
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--cor-menu);
+            color: var(--cor-menu-texto);
+            padding: 35px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--cor-destaque);
+        }
+
+        .footer a {
+            color: var(--cor-menu-texto);
+            text-decoration: none;
+            margin: 0 8px;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--cor-destaque);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-desc { font-size: 0.95rem; }
+            .showcase-body { padding: 20px; }
+            .floating-return-btn { bottom: 20px; right: 20px; padding: 12px 18px; font-size: 0.85rem; }
+            .human-about-box { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-brand">
+            <img src="gallyPRO_ronaldmcdonald.png" alt="Logo GallyPRO">
+            <span>GallyPRO</span>
+        </a>
+        <div class="lang-switch">
+            <button class="lang-btn active" id="btn-pt" onclick="switchLang('pt')">PT</button>
+            <button class="lang-btn" id="btn-en" onclick="switchLang('en')">EN</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+
+        <!-- Hero Header -->
+        <header class="hero">
+            <h1 id="hero-title">GallyPRO — <span>Backtest & Gestão de Carteira</span></h1>
+            <p class="hero-desc" id="hero-desc">
+                Criei o GallyPRO como uma ferramenta prática para realizar backtests de estratégias de investimento, acompanhar a evolução patrimonial e gerenciar a carteira em um único lugar.
+            </p>
+            
+            <div class="tech-tags">
+                <div class="tech-tag"><i class="fa-brands fa-python"></i> Python</div>
+                <div class="tech-tag"><i class="fa-solid fa-calculator"></i> Simulação & Backtest</div>
+                <div class="tech-tag"><i class="fa-solid fa-chart-pie"></i> Gestão de Carteira</div>
+                <div class="tech-tag"><i class="fa-solid fa-chart-line"></i> ApexCharts & Web Interface</div>
+            </div>
+        </header>
+
+        <div class="content">
+
+            <!-- Human About Section -->
+            <section class="human-about-box">
+                <h3><i class="fa-solid fa-compass-drafting"></i> <span id="about-title">Qual é o objetivo do GallyPRO?</span></h3>
+                <p id="about-p1">
+                    O GallyPRO foi desenvolvido para permitir testar hipóteses e estratégias com dados históricos (backtesting) e ter um controle visual claro sobre o crescimento da carteira e alocação de ativos.
+                </p>
+                <p id="about-p2">
+                    Com ele, é possível simular cenários antes de tomar decisões financeiras, acompanhar a evolução do patrimônio ao longo do tempo e organizar o gerenciamento de investimentos de forma simples e direta.
+                </p>
+            </section>
+
+            <!-- Showcase Title -->
+            <div class="section-title">
+                <h2 id="gallery-title">Telas da Ferramenta</h2>
+                <p id="gallery-sub">Clique em qualquer imagem para abrir em tela cheia e ver os detalhes</p>
+            </div>
+
+            <!-- Big Showcase Cards (Screenshots Highlighted) -->
+            <div class="showcase-list">
+
+                <!-- Print 1: Main Dashboard -->
+                <article class="showcase-item">
+                    <div class="showcase-header-bar">
+                        <div class="window-dots">
+                            <span class="window-dot dot-red"></span>
+                            <span class="window-dot dot-yellow"></span>
+                            <span class="window-dot dot-green"></span>
+                        </div>
+                        <span id="print1-bar">Dashboard de Desempenho & Evolução Patrimonial</span>
+                        <span><i class="fa-solid fa-expand"></i></span>
+                    </div>
+                    <div class="showcase-img-container" onclick="openModal('Captura de tela 2026-07-30 194827.png')">
+                        <img src="Captura de tela 2026-07-30 194827.png" alt="Painel principal do GallyPRO com acompanhamento da carteira e resultados">
+                        <div class="img-overlay-hint">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            <span id="hint-zoom1">Clique para ampliar</span>
+                        </div>
+                    </div>
+                    <div class="showcase-body">
+                        <h3><i class="fa-solid fa-chart-line"></i> <span id="print1-title">Painel de Acompanhamento da Carteira</span></h3>
+                        <p id="print1-desc">
+                            Visão geral do desempenho dos investimentos, onde posso visualizar a evolução do patrimônio ao longo do tempo, comparar resultados de estratégias e analisar métricas de crescimento.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Print 2: Config & Backtest Parameters -->
+                <article class="showcase-item">
+                    <div class="showcase-header-bar">
+                        <div class="window-dots">
+                            <span class="window-dot dot-red"></span>
+                            <span class="window-dot dot-yellow"></span>
+                            <span class="window-dot dot-green"></span>
+                        </div>
+                        <span id="print2-bar">Configuração de Backtest & Regras da Carteira</span>
+                        <span><i class="fa-solid fa-expand"></i></span>
+                    </div>
+                    <div class="showcase-img-container" onclick="openModal('Captura de tela 2026-07-30 194857.png')">
+                        <img src="Captura de tela 2026-07-30 194857.png" alt="Tela de configuração de parâmetros de backtest e alocação">
+                        <div class="img-overlay-hint">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            <span id="hint-zoom2">Clique para ampliar</span>
+                        </div>
+                    </div>
+                    <div class="showcase-body">
+                        <h3><i class="fa-solid fa-sliders"></i> <span id="print2-title">Simulações & Parâmetros de Gestão</span></h3>
+                        <p id="print2-desc">
+                            Painel interativo para ajustar parâmetros de simulação, definir regras de rebalanceamento, porcentagens de alocação de ativos e simular o impacto de diferentes abordagens na carteira.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Print 3: Branding & Identity -->
+                <article class="showcase-item">
+                    <div class="showcase-header-bar">
+                        <div class="window-dots">
+                            <span class="window-dot dot-red"></span>
+                            <span class="window-dot dot-yellow"></span>
+                            <span class="window-dot dot-green"></span>
+                        </div>
+                        <span id="print3-bar">Identidade do Projeto</span>
+                        <span><i class="fa-solid fa-expand"></i></span>
+                    </div>
+                    <div class="showcase-img-container" onclick="openModal('gallyPRO_ronaldmcdonald.png')">
+                        <img src="gallyPRO_ronaldmcdonald.png" alt="Logo e mascote do projeto GallyPRO" style="max-height: 420px; object-fit: contain;">
+                        <div class="img-overlay-hint">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            <span id="hint-zoom3">Clique para ampliar</span>
+                        </div>
+                    </div>
+                    <div class="showcase-body">
+                        <h3><i class="fa-solid fa-shield"></i> <span id="print3-title">Marca & Identidade GallyPRO</span></h3>
+                        <p id="print3-desc">
+                            Logotipo do projeto GallyPRO, criado para representar a ferramenta de gestão e simulação de investimentos.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Floating Return Button -->
+    <a href="../index.html" class="floating-return-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span id="txt-floating-return">Voltar ao Portfólio</span>
+    </a>
+
+    <!-- Lightbox Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="imgModalTarget" alt="Imagem ampliada" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 João Victor Fernandes. Projeto GallyPRO.</p>
+        <p style="margin-top: 8px;">
+            <a href="../index.html">Portfólio Principal</a> |
+            <a href="https://www.linkedin.com/in/jvffernandes1" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/jvffernandes1" target="_blank">GitHub</a>
+        </p>
+    </footer>
+
+    <!-- Translation Script -->
+    <script>
+        const i18n = {
+            pt: {
+                "hero-title": "GallyPRO — <span>Backtest & Gestão de Carteira</span>",
+                "hero-desc": "Criei o GallyPRO como uma ferramenta prática para realizar backtests de estratégias de investimento, acompanhar a evolução patrimonial e gerenciar a carteira em um único lugar.",
+                "about-title": "Qual é o objetivo do GallyPRO?",
+                "about-p1": "O GallyPRO foi desenvolvido para permitir testar hipóteses e estratégias com dados históricos (backtesting) e ter um controle visual claro sobre o crescimento da carteira e alocação de ativos.",
+                "about-p2": "Com ele, é possível simular cenários antes de tomar decisões financeiras, acompanhar a evolução do patrimônio ao longo do tempo e organizar o gerenciamento de investimentos de forma simples e direta.",
+                "gallery-title": "Telas da Ferramenta",
+                "gallery-sub": "Clique em qualquer imagem para abrir em tela cheia e ver os detalhes",
+                "print1-bar": "Dashboard de Desempenho & Evolução Patrimonial",
+                "print1-title": "Painel de Acompanhamento da Carteira",
+                "print1-desc": "Visão geral do desempenho dos investimentos, onde posso visualizar a evolução do patrimônio ao longo do tempo, comparar resultados de estratégias e analisar métricas de crescimento.",
+                "hint-zoom1": "Clique para ampliar",
+                "print2-bar": "Configuração de Backtest & Regras da Carteira",
+                "print2-title": "Simulações & Parâmetros de Gestão",
+                "print2-desc": "Painel interativo para ajustar parâmetros de simulação, definir regras de rebalanceamento, porcentagens de alocação de ativos e simular o impacto de diferentes abordagens na carteira.",
+                "hint-zoom2": "Clique para ampliar",
+                "print3-bar": "Identidade do Projeto",
+                "print3-title": "Marca & Identidade GallyPRO",
+                "print3-desc": "Logotipo do projeto GallyPRO, criado para representar a ferramenta de gestão e simulação de investimentos.",
+                "hint-zoom3": "Clique para ampliar",
+                "txt-floating-return": "Voltar ao Portfólio"
+            },
+            en: {
+                "hero-title": "GallyPRO — <span>Backtesting & Portfolio Management</span>",
+                "hero-desc": "I built GallyPRO as a practical tool for backtesting investment strategies, tracking net worth growth, and managing portfolios in one place.",
+                "about-title": "What is the goal of GallyPRO?",
+                "about-p1": "GallyPRO was developed to test strategy hypotheses using historical data (backtesting) and maintain clear visual control over asset allocation and portfolio growth.",
+                "about-p2": "It enables simulating scenarios prior to making financial choices, tracking performance trends over time, and organizing investment management straightforwardly.",
+                "gallery-title": "Tool Screenshots",
+                "gallery-sub": "Click any image to inspect in full screen",
+                "print1-bar": "Performance Dashboard & Net Worth Evolution",
+                "print1-title": "Portfolio Performance Dashboard",
+                "print1-desc": "Overview of investment performance, displaying capital growth over time, comparing strategy outcomes, and analyzing portfolio metrics.",
+                "hint-zoom1": "Click to expand",
+                "print2-bar": "Backtest Parameters & Asset Rules",
+                "print2-title": "Simulation & Management Settings",
+                "print2-desc": "Interactive panel to adjust simulation parameters, define asset allocation percentages, and simulate strategy impacts on portfolio growth.",
+                "hint-zoom2": "Click to expand",
+                "print3-bar": "Project Identity",
+                "print3-title": "GallyPRO Brand & Emblem",
+                "print3-desc": "GallyPRO project emblem, designed for the investment management and backtesting application.",
+                "hint-zoom3": "Click to expand",
+                "txt-floating-return": "Back to Portfolio"
+            }
+        };
+
+        function switchLang(lang) {
+            document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            const dictionary = i18n[lang];
+            for (let key in dictionary) {
+                const elem = document.getElementById(key);
+                if (elem) {
+                    elem.innerHTML = dictionary[key];
+                }
+            }
+            localStorage.setItem('gallypro_lang', lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('gallypro_lang') || 'pt';
+            switchLang(savedLang);
+        });
+
+        function openModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('imgModalTarget');
+            modal.classList.add('show');
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('show');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
